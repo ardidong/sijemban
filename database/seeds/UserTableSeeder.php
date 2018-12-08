@@ -14,7 +14,15 @@ class UserTableSeeder extends Seeder
         User::create([
             'name'  => 'Ardi',
             'email' => 'ardimail@gmail.com',
-            'password' => '$2y$10$Gprgyd6wNPH1rROd.Y3gL.4mqXv8RCoJbyG5Ds9w3vlh/b5w3KJcu',
+            'password' => Hash::make('123456'),
+            'alamat' => 'sleman',
+            'no_telepon'=> '086142648',
+            'remember_token' => 'o93o'
+        ]);
+        User::create([
+            'name'  => 'Ard0',
+            'email' => 'ardomail@gmail.com',
+            'password' => Hash::make('654321'),
             'alamat' => 'sleman',
             'no_telepon'=> '086142648',
             'remember_token' => 'o93o'

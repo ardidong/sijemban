@@ -23,7 +23,9 @@ class DonasiController extends Controller
      */
     public function index()
     {
-        return view('donasi.index');
+        $ids = Auth::user()->id;
+        $donasis = Donasi::all()->where('id_donatur',$ids);
+        return view('donasi.index',compact('donasis'));
     }
 
     /**
@@ -33,6 +35,7 @@ class DonasiController extends Controller
      */
     public function create()
     {
+        
         return view('donasi.create');
     }
 
