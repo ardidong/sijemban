@@ -12,7 +12,7 @@ class PetugasLoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:petugas')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
     public function showLoginForm()

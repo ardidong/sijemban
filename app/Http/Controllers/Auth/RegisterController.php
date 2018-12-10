@@ -72,5 +72,9 @@ class RegisterController extends Controller
             'no_telepon' => $data['no_telepon'],
             'password' => Hash::make($data['password']),
         ]);
+        $user
+        ->roles()
+        ->attach(Role::where('name', 'donator')->first());
+        return $user;
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Role;
 class UserTableSeeder extends Seeder
 {
     /**
@@ -11,21 +12,39 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name'  => 'Ardi',
-            'email' => 'ardimail@gmail.com',
-            'password' => Hash::make('123456'),
-            'alamat' => 'sleman',
-            'no_telepon'=> '086142648',
-            'remember_token' => 'o93o'
-        ]);
-        User::create([
-            'name'  => 'Ard0',
-            'email' => 'ardomail@gmail.com',
-            'password' => Hash::make('654321'),
-            'alamat' => 'sleman',
-            'no_telepon'=> '086142648',
-            'remember_token' => 'o93o'
-        ]);
+        $role_donator = Role::where('name','donator')->first();
+        $role_petugas = Role::where('name','petugas')->first();
+        $role_admin = Role::where('name','admin')->first();
+       
+        $donator = new User();
+        $donator->name = 'Ardi';
+        $donator->email = 'ardimail@gmail.com';
+        $donator->password = Hash::make('123456');
+        $donator->alamat = 'Sleman';
+        $donator->no_telepon = '0862612342';
+        $donator->remember_token = 'd2j3';
+        $donator->save();
+        $donator->roles()->attach($role_donator);
+
+        $petugas = new User();
+        $petugas->name = 'petugas1';
+        $petugas->email = 'petugas@lsm.com';
+        $petugas->password = Hash::make('123456');
+        $petugas->alamat = 'Mlati';
+        $petugas->no_telepon = '084764754';
+        $petugas->remember_token = 'ss7t';
+        $petugas->save();
+        $petugas->roles()->attach($role_petugas);
+
+        $admin = new User();
+        $admin->name = 'admin';
+        $admin->email = 'admin@lsm.com';
+        $admin->password = Hash::make('123456');
+        $admin->alamat = 'Godean';
+        $admin->no_telepon = '08647566';
+        $admin->remember_token = 'a8s0';
+        $admin->save();
+        $admin->roles()->attach($role_admin);
+
     }
 }

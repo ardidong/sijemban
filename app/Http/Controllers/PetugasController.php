@@ -13,7 +13,7 @@ class PetugasController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:petugas');
+        $this->middleware('auth:web');
     }
 
     /**
@@ -21,8 +21,9 @@ class PetugasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles('petugas');
         return view('petugas');
     }
 }
