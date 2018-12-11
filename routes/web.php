@@ -18,13 +18,15 @@ Route::get('/', function () {
 
 Route::resource('donasi','DonasiController');
 Route::resource('bencana','BencanaController');
+Route::resource('petugas','PetugasController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route ::prefix('petugas')->group(function(){
-    Route::get('/login','Auth\PetugasLoginController@showLoginForm')->name('petugas.login');
-    Route::post('/login','Auth\PetugasLoginController@login')->name('petugas.login.submit');
-    Route::get('/','PetugasController@index')->name('petugas.dashboard');
+Route::get('/admin', function () {
+    return view('admin');
 });
+Route::view('/dashboardpetugas', function () {
+    return view('petugas');
+})->name('petugas.dashboard');
+

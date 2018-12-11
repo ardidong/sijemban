@@ -29,5 +29,8 @@ class HomeController extends Controller
         if($request->user()->hasRole('petugas')){
             return redirect()->intended(route('petugas.dashboard'));
         }
+        if($request->user()->hasRole('admin')){
+            return view('/admin');
+        }
     }
 }

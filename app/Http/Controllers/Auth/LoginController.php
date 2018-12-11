@@ -36,7 +36,10 @@ class LoginController extends Controller
             return redirect('/home');
         }
         if($request->user()->hasRole('petugas')){
-            return redirect()->intended(route('petugas.dashboard'));
+            return redirect()->intended(route(' petugas.dashboard'));
+        }
+        if($request->user()->hasRole('admin')){
+            return redirect('/admin');
         }
     }
 
