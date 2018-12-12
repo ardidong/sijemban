@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace JEMBATAN;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,11 +13,11 @@ class Donasi extends Model
 
     public function barang()
     {
-        return $this->hasMany('App\Barang');
+        return $this->hasMany('JEMBATAN\Barang');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('JEMBATAN\User');
     }
 }

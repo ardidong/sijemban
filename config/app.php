@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'JEMBATAN'),
 
     /*
     |--------------------------------------------------------------------------
@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        JEMBATAN\Providers\AppServiceProvider::class,
+        JEMBATAN\Providers\AuthServiceProvider::class,
+        // JEMBATAN\Providers\BroadcastServiceProvider::class,
+        JEMBATAN\Providers\EventServiceProvider::class,
+        JEMBATAN\Providers\RouteServiceProvider::class,
 
     ],
 

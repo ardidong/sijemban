@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace JEMBATAN;
 
 use Illuminate\Database\Eloquent\Model;
 

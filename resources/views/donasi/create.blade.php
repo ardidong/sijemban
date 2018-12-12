@@ -7,7 +7,7 @@
         <div class='row '>
             <div class='col-md-7 offset-md-3'>
                 <div class='card'>
-                    <div class='card-header bg-primary text-white'><h2>Formulir Donasi</h2></div>
+                    <div class='card-header bg-danger text-white'><h2>Formulir Donasi</h2></div>
                     <div class='card-body'>
                         <div class='row'>
                             <div class='col-md-12'>

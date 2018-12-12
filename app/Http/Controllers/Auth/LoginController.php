@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace JEMBATAN\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use JEMBATAN\User;
+use JEMBATAN\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace JEMBATAN\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use JEMBATAN\Http\Controllers\Controller;
 use Auth;
-use App\Petugas;
+use JEMBATAN\Petugas;
 
 class PetugasLoginController extends Controller
 {

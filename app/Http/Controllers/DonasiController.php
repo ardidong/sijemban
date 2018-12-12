@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace JEMBATAN\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Donasi;
-use App\Barang;
+use JEMBATAN\Donasi;
+use JEMBATAN\Barang;
 use Illuminate\Support\Facades\Auth;
 
 class DonasiController extends Controller
@@ -120,6 +120,9 @@ class DonasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $donasi = Donasi::find($id);
+        $donasi->delete();
+   
+        return redirect('/shares')->with('success', 'Stock has been deleted Successfully');
     }
 }

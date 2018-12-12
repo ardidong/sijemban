@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace JEMBATAN\Http\Controllers;
 
-use App\Bencana;
+use JEMBATAN\Bencana;
 use Illuminate\Http\Request;
 
 class BencanaController extends Controller

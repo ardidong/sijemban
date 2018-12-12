@@ -32,14 +32,7 @@
             <td>{{$donasi->created_at}}</td>
             <td>{{$donasi->no_resi}}</td>
             <td>{{$donasi->status}}</td>
-            <td><a href="{{ route('donasi.edit',$donasi->kode_donasi)}}" class="btn btn-primary">Edit</a></td>
-            <td>
-                <form action="{{ route('donasi.destroy', $donasi->kode_donasi)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-            </td>
+            <td><a href="{{ route('donasi.edit',$donasi->kode_donasi)}}" class="btn btn-primary">Detail</a></td>
         </tr>
         @endforeach
     </tbody>

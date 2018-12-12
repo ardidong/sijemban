@@ -72,7 +72,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => JEMBATAN\User::class,
         ],
         'petugas' => [
             'driver' => 'eloquent',

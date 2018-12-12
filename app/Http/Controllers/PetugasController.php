@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace JEMBATAN\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
-use App\User;
-use App\Role;
+use JEMBATAN\User;
+use JEMBATAN\Role;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller
