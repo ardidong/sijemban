@@ -24,7 +24,7 @@ class BencanaController extends Controller
      */
     public function create()
     {
-        //
+        return view('bencana.create');
     }
 
     /**
