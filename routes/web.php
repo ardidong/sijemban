@@ -19,6 +19,8 @@ Route::get('/', function () {
 Route::resource('donasi','DonasiController');
 Route::resource('bencana','BencanaController');
 Route::resource('petugas','PetugasController');
+Route::resource('jemput','JemputController');
+
 
 Auth::routes();
 

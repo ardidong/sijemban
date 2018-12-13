@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Bencana;
+use JEMBATAN\Bencana;
 
 
 class BencanasTableSeeder extends Seeder

@@ -64,7 +64,6 @@ class DonasiController extends Controller
             'provinsi'=>$request->post('provinsi'),
             'id_donatur'=>Auth::user()->id,
             'id_bencana'=>'1',
-            'id_petugas'=>$request->post('id_petugas')
         ]);
         // $barang = new barang([
         //     'kode_donasi'=>$request->post('kode_donasi'),
@@ -86,7 +85,7 @@ class DonasiController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

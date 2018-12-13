@@ -3,6 +3,7 @@
 namespace JEMBATAN\Http\Controllers;
 
 use Illuminate\Http\Request;
+use JEMBATAN\Donasi;
 
 class JemputController extends Controller
 {
@@ -13,7 +14,8 @@ class JemputController extends Controller
      */
     public function index()
     {
-        //
+        $donasis = Donasi::all();
+        return view('jemput.index',compact('donasis'));
     }
 
     /**
