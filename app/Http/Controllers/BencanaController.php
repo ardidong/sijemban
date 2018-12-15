@@ -12,9 +12,9 @@ class BencanaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $request->user()->authorizeRoles('admin');
     }
 
     /**
@@ -22,8 +22,9 @@ class BencanaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         return view('bencana.create');
     }
 
@@ -35,7 +36,31 @@ class BencanaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'batas_waktu'=>'required',
+            'nama_bencana'=>'required',
+            'deskripsi'=>'required',
+            'cover'=>'image|nullable|max:4999'
+        ]);
         //
+        if($request->hasFile('cover')){
+            $fileNameWithExt = $request->file('cover')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME); 
+            $extension = $request->file('cover')->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $path = $request->file('cover')->storeAs('public/cover',$fileNameToStore);
+        }else{
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+
+        $bencana = new bencana([
+            'batas_waktu'=>$request->post('batas_waktu'),
+            'nama_bencana'=>$request->post('nama_bencana'),
+            'deskripsi'=>$request->post('deskripsi'),
+            'cover'=>$fileNameToStore
+        ]);
+        $bencana->save();
     }
 
     /**

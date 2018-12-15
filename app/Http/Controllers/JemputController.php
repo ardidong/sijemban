@@ -4,6 +4,7 @@ namespace JEMBATAN\Http\Controllers;
 
 use Illuminate\Http\Request;
 use JEMBATAN\Donasi;
+use Illuminate\Support\Str;
 
 class JemputController extends Controller
 {
@@ -12,9 +13,10 @@ class JemputController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $donasis = Donasi::all();
+        $request->user()->authorizeRoles('petugas');
+        $donasis = Donasi::all()->sortByDesc('created_at');
         return view('jemput.index',compact('donasis'));
     }
 
@@ -45,9 +47,16 @@ class JemputController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        $request->user()->authorizeRoles('petugas');
+        $donasis = Donasi::find($id);
+        return view('donasi.show',compact('donasis'));
+    }
+
+    public function verifikasi($id)
+    {
+        
     }
 
     /**
@@ -56,9 +65,13 @@ class JemputController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request)
     {
-        //
+        $verif = Donasi::find($id);
+        $verif->status ='Dijemput';
+        $verif->no_resi = Str::random();
+        $verif->save();
+        return redirect()->intended(route(' jemput'));
     }
 
     /**
@@ -70,7 +83,7 @@ class JemputController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
     }
 
     /**

@@ -17,7 +17,8 @@ class CreateBencanasTable extends Migration
             $table->increments('id_bencana');
             $table->date('batas_waktu');
             $table->string('nama_bencana');
-            $table->string('deskripsi');    
+            $table->string('deskripsi');   
+            $table->string('cover')->nullable(); 
             $table->timestamps();
         });
     }

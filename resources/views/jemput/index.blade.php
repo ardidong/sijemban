@@ -31,10 +31,21 @@
             <td>{{$donasi->id_donatur}}</td>
             <td>{{$donasi->kode_donasi}}</td>
             <td>{{$donasi->id_bencana}}</td>
-            <td>{{$donasi->created_at}}</td>
+            <td>{{$donasi->created_at->format('d/m/Y')}}</td>
             <td>{{$donasi->no_resi}}</td>
-            <td>{{$donasi->status}}</td>
-            <td><a href="{{ route('donasi.edit',$donasi->kode_donasi)}}" class="btn btn-primary">Detail</a></td>
+            <td>
+              @if($donasi->status=='Diajukan')
+                <button type="button" class="btn btn-light border border-primary .mx-auto"> <strong>Diajukan</strong></button>
+              @endif
+              @if($donasi->status=='Dijemput')
+                <button type="button" class="btn btn-light border border-success .mx-auto"> <strong>Dijemput</strong></button>
+              @endif
+            </td>
+            <td><a href="{{ route('jemput.show',$donasi->kode_donasi)}}" class="btn btn-primary">Detail</a>
+              @if($donasi->status == 'Diajukan')
+                <a href="{{ route('jemput.edit',$donasi->kode_donasi)}}" class="btn btn-success" onclick="return confirm('Konfirmasi Verifikasi')">Verifikasi</a>
+              @endif
+            </td>
         </tr>
         @endforeach
     </tbody>

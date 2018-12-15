@@ -3,15 +3,15 @@
 
 @section('content')
     <div class="container">
-        <h1>DONASI </h1>
-        <div class='row '>
+        
+        <div class='row mt-5 '>
             <div class='col-md-7 offset-md-3'>
-                <div class='card'>
+                <div class='card shadow mb-5 bg-white rounded'>
                     <div class='card-header bg-danger text-white'><h2>Formulir Donasi</h2></div>
                     <div class='card-body'>
                         <div class='row'>
                             <div class='col-md-12'>
-                              <form name="add_donasi" id="add_donasi">
+                                 <form method="post" action="{{ route('donasi.store') }}" name="add_donasi" id="add_donasi">
                                 @csrf
 
                                 <div class='form-group'>
@@ -36,27 +36,27 @@
 
                                 <hr>
 
-                                <h3 for="barang">Barang</h3>
+                                <h3 for="barang">Barang </h3>
                                 <div class='form-group' id='dynamic_field'>
-                        
-                                    <label for="Jenis">Jenis Barang</label>
-                                    <select class='form-control' name="barang[][jenis]" >
-                                        <option value="distribusi">Barang Siap Distribusi</option>
-                                        <option value="aksi">Barang Aksi Kemanusiaan</option>
-                                        <option value="bernilai">Barang Bernilai</option>
-                                    </select>  
-                                
-                                    <label for="namabarang">Nama Barang</label>
-                                    <input class='form-control' type="text" name="barang[][nama]" >
-                                
-                                    <label for="jumlahbrg">Jumlah Barang</label>
-                                    <input class='form-control' type="number" name="barang[][j]umlah]" >
+                                 
+                                        <label for="Jenis">Jenis Barang</label>
+                                        <select class='form-control' name="jenis" >
+                                            <option value="distribusi">Barang Siap Distribusi</option>
+                                            <option value="aksi">Barang Aksi Kemanusiaan</option>
+                                            <option value="bernilai">Barang Bernilai</option>
+                                        </select>  
                                     
-
-                                </div>
+                                        <label for="namabarang">Nama Barang</label>
+                                        <input class='form-control' type="text" name="namabarang" >
+                                    
+                                        <label for="jumlahbrg">Jumlah Barang</label>
+                                        <input class='form-control' type="number" name="jmlbarang" >
+                                    
+                                </div> 
+                                    
                                     <button type="button" name="add" id="add" class='btn btn-success'>Tambah</button>
 
-                                <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" >
+                                <input type="submit" class="btn btn-primary" value="Submit" >
                               </form>
                            </div>
                         </div>
@@ -73,7 +73,7 @@
 
             $('#add').click(function(){  
                 i++;  
-                $('#dynamic_field').append('<div id="field'+i+'"><hr><label for="Jenis">Jenis Barang</label><select class="form-control" name="jenis[]" id="jenis"><option value="distribusi">Barang Siap Distribusi</option><option value="aksi">Barang Aksi Kemanusiaan</option><option value="bernilai">Barang Bernilai</option></select><label for="namabarang">Nama Barang</label><input class="form-control" type="text" name="namabarang[]" id="namabarang"><label for="jumlahbrg">Jumlah Barang</label><input class="form-control" type="number" name="jmlbarang" id="jmlbarang"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');  
+                $('#dynamic_field').append('<div id="field'+i+'"><br><h3 for="barang">Barang</h3> <hr><label for="Jenis">Jenis Barang</label><select class="form-control" name="jenis[]" id="jenis"><option value="distribusi">Barang Siap Distribusi</option><option value="aksi">Barang Aksi Kemanusiaan</option><option value="bernilai">Barang Bernilai</option></select><label for="namabarang">Nama Barang</label><input class="form-control" type="text" name="namabarang[]" id="namabarang"><label for="jumlahbrg">Jumlah Barang</label><input class="form-control" type="number" name="jmlbarang[]" id="jmlbarang"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');  
             
             });  
 
@@ -83,7 +83,7 @@
                 $('#field'+button_id+'').remove();  
             });     
 
-            $('#submit').click(function(){            
+           /* $('#submit').click(function(){            
                 $.ajax({  
                         url:postURL,  
                         method:"POST",  
@@ -106,7 +106,7 @@
                 });  
             });  
 
-
+*/
           });  
       </script>
     @endsection

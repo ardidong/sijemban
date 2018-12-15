@@ -2,6 +2,7 @@
 
 namespace JEMBATAN\Http\Controllers;
 
+use JEMBATAN\Bencana;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if($request->user()->hasRole('donator')){
-            return view('/home');
+            $bencanas = Bencana::all();
+            return view('welcome',compact('bencanas'));
         }
         if($request->user()->hasRole('petugas')){
             return redirect()->intended(route('petugas.dashboard'));

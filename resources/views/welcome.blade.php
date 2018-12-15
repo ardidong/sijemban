@@ -31,6 +31,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+         <!-- Left Side Of Navbar -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="index.html" style="color: white">Home <span class="sr-only">(current)</span></a>
@@ -52,11 +53,48 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn" type="button" style="background-color:white; color:#EB413D;">Search</button>
-          <a class="" type="" href="{{ route('login') }}" style="background-color:#eb413d; color:white;">Login</a>
-        </form>
+        
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ml-auto">
+
+          <!--Search Links-->
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn" type="button" style="background-color:white; color:#EB413D;">Search</button>
+          </form>
+
+          <!-- Authentication Links -->
+          @guest
+              <li class="nav-item ">
+                  <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+              <li class="nav-item">
+                  @if (Route::has('register'))
+                      <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
+                  @endif
+              </li>
+          @else
+              <li class="nav-item dropdown">
+                  <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                      {{ Auth::user()->name }} <span class="caret"></span>
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item " href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
+          @endguest
+      </ul>
+
+        
       </div>
     </nav>
 
@@ -114,11 +152,12 @@
         
         <div class="album py-5 bg-light">
             <div class="container">
-    
               <div class="row">
+              
+                @foreach($bencanas as $bencana)
                 <div class="col-md-4">
                   <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="{{ asset('Storage/bencana.jpg')	}}" alt="Card image cap">
+                    <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="Card image cap">
                     <div class="card-body">
                       <p class="card-text">Mari bantu saudara kita yang terkena musibah. Ulurkan tangan kalian.</p>
                       <div class="d-flex justify-content-between align-items-center">
@@ -130,77 +169,17 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="{{ asset('Storage/bencana.jpg')	}}" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">Mari bantu saudara kita yang terkena musibah. Ulurkan tangan kalian.</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-danger"> DONASI </button>
-                        </div>
-                        <small class="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="{{ asset('Storage/bencana.jpg')	}}" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">Mari bantu saudara kita yang terkena musibah. Ulurkan tangan kalian.</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-danger"> DONASI </button>
-                        </div>
-                        <small class="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                @endforeach
+
+               
+
+                
     
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="{{ asset('Storage/bencana.jpg')	}}" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">Mari bantu saudara kita yang terkena musibah. Ulurkan tangan kalian.</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-danger"> DONASI </button>
-                        </div>
-                        <small class="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="{{ asset('Storage/bencana.jpg')	}}" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">Mari bantu saudara kita yang terkena musibah. Ulurkan tangan kalian.</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-danger"> DONASI </button>
-                        </div>
-                        <small class="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="{{ asset('Storage/bencana.jpg')	}}" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">Mari bantu saudara kita yang terkena musibah. Ulurkan tangan kalian.</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-danger"> DONASI </button>
-                        </div>
-                        <small class="text-muted">9 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>                
+              
+
+               
+
+                             
               </div>
             </div>
           </div>

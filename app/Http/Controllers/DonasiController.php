@@ -21,10 +21,11 @@ class DonasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles('donator');
         $ids = Auth::user()->id;
-        $donasis = Donasi::all()->where('id_donatur',$ids);
+        $donasis = Donasi::all()->where('id_donatur',$ids)->sortByDesc('created_at');
         return view('donasi.index',compact('donasis'));
     }
 
@@ -83,9 +84,11 @@ class DonasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        
+        $request->user()->authorizeRoles('donator');
+        $donasis = Donasi::find($id);
+        return view('donasi.show',compact('donasis'));
     }
 
     /**
