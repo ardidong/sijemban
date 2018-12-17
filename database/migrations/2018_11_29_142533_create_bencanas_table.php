@@ -14,11 +14,12 @@ class CreateBencanasTable extends Migration
     public function up()
     {
         Schema::create('bencanas', function (Blueprint $table) {
-            $table->increments('id_bencana');
+            $table->increments('id');
             $table->date('batas_waktu');
             $table->string('nama_bencana');
             $table->string('deskripsi');   
             $table->string('cover')->nullable(); 
+            $table->string('status'); 
             $table->timestamps();
         });
     }

@@ -24,15 +24,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->user()->hasRole('donator')){
-            $bencanas = Bencana::all();
-            return view('welcome',compact('bencanas'));
-        }
-        if($request->user()->hasRole('petugas')){
-            return redirect()->intended(route('petugas.dashboard'));
-        }
-        if($request->user()->hasRole('admin')){
-            return view('/admin');
-        }
+        $bencanas = Bencana::all();
+        return view('welcome',compact('bencanas'));
     }
 }

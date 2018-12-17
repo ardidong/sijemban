@@ -26,7 +26,7 @@ class CreateDonasisTable extends Migration
             $table->integer('id_bencana')->unsigned();
             $table->integer('id_petugas')->nullable();
             $table->foreign('id_donatur')->references('id')->on('users');
-            $table->foreign('id_bencana')->references('id_bencana')->on('bencanas');
+            $table->foreign('id_bencana')->references('id')->on('bencanas');
             $table->foreign('id_petugas')->references('id_petugas')->on('petugass');
             $table->timestamps();
         });

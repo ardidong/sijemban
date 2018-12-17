@@ -32,7 +32,7 @@ class BencanaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response    
      */
     public function store(Request $request)
     {
@@ -40,7 +40,7 @@ class BencanaController extends Controller
             'batas_waktu'=>'required',
             'nama_bencana'=>'required',
             'deskripsi'=>'required',
-            'cover'=>'image|nullable|max:4999'
+            'cover'=>'image|nullable|max:1999'
         ]);
         //
         if($request->hasFile('cover')){
@@ -58,6 +58,7 @@ class BencanaController extends Controller
             'batas_waktu'=>$request->post('batas_waktu'),
             'nama_bencana'=>$request->post('nama_bencana'),
             'deskripsi'=>$request->post('deskripsi'),
+            'status'=>'Diunggah',
             'cover'=>$fileNameToStore
         ]);
         $bencana->save();

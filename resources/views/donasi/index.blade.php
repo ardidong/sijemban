@@ -2,58 +2,42 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="uper">
+
   @if(session()->get('success'))
     <div class="alert alert-success">
       {{ session()->get('success') }}  
     </div><br />
   @endif
-
-  <div class="container-fluid">
-      <div class="row">
+  <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet"> 
+  <div class='container-fluid'>
+    <div class='row'>
+      
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
-            <ul class="nav flex-column">
+            <ul class="nav flex-column mt-3">
               <li class="nav-item">
-                <a class="nav-link active" href="dashboard.html">
+                <a class="nav-link active" href="#">
                   <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Riwayat Donasi
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Lacak Donasi
+                  Riwayat Donasi <span class="sr-only">(current)</span>
                 </a>
               </li>
             </ul>
+            
           </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 bg-white">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10   pt-3 px-4 bg-white">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
           </div>
-
-          <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
-
+          
           <h2>Riwayat Donasi</h2>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <button  id='detail' nama='detail' class="btn btn-outline-primary mb-2">Detail </button>
+            <table id='riwayat' class="table table-striped table-bordered" style="width:100%">
               <thead>
                   <tr>
-                    <td>Kode</td>
+                    <td>id</td>
                     <td>ID Bencana</td>
                     <td>Diajukan</td>
                     <td>Alamat</td>
@@ -71,17 +55,52 @@
                       <td>{{$donasi->alamat}}</td>
                       <td>{{$donasi->no_resi}}</td>
                       <td>{{$donasi->status}}</td>
-                      <td><a href="{{ route('donasi.show',$donasi->kode_donasi)}}" class="btn btn-primary">Detail</a></td>
+                      <!--<td><a href="{{ route('donasi.show',$donasi->kode_donasi)}}" >Detail</a></td>
+                      -->
                   </tr>
                   @endforeach
               </tbody>
             </table>
           </div>
+          
+          </div>
         </main>
-      </div>
+
+
     </div>
-
-
+  </div>
   
- <div>
+
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        
+      var table = $('#riwayat').DataTable();
+      var row;
+        $('#riwayat tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+            var pos = table.row(this).index();
+            var row = table.row(pos).data();
+        } );
+          
+        $('#detail').click( function () {
+          var data = table.rows('.selected').data();
+       
+          var lokasi = '{{ route("donasi.show", "id") }}';
+          lokasi = lokasi.replace('id',data[0][0]);
+         //   table.row('.selected').remove().draw( false );
+          window.location.href = lokasi;
+        } );
+        // $('#riwayat').DataTable( {
+        //  select: true
+        //  } );
+    } );
+  </script>
 @endsection

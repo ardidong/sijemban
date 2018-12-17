@@ -25,7 +25,7 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-white fixed-top" style="background-color: #EB413D;">
-      <a class="navbar-brand" href="index.html" style="color: white; font-weight: bold;">JEMBATAN</a>    
+      <a class="navbar-brand" href="{{route('home')}}" style="color: white; font-weight: bold;">JEMBATAN</a>    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -159,10 +159,10 @@
                   <div class="card mb-4 shadow-sm">
                     <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="Card image cap">
                     <div class="card-body">
-                      <p class="card-text">Mari bantu saudara kita yang terkena musibah. Ulurkan tangan kalian.</p>
+                      <p class="card-text">{{$bencana->nama_bencana}}</p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-danger"> DONASI </button>
+                        <a href="donasi/create/{{$bencana->id }} " class="btn btn-danger btn active" role="button" aria-pressed="true">Donasi</a>
                         </div>
                         <small class="text-muted">9 mins</small>
                       </div>

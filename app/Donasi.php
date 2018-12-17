@@ -13,7 +13,7 @@ class Donasi extends Model
 
     public function barang()
     {
-        return $this->hasMany('JEMBATAN\Barang');
+        return $this->hasMany(Barang::class,'kode_donasi');
     }
 
     public function user()

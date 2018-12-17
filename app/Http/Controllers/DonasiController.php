@@ -5,6 +5,7 @@ namespace JEMBATAN\Http\Controllers;
 use Illuminate\Http\Request;
 use JEMBATAN\Donasi;
 use JEMBATAN\Barang;
+use JEMBATAN\Bencana;
 use Illuminate\Support\Facades\Auth;
 
 class DonasiController extends Controller
@@ -34,10 +35,11 @@ class DonasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id,Request $request)
     {
-        
-        return view('donasi.create');
+        $request->user()->authorizeRoles('donator');
+        $bencana = Bencana::find($id);
+        return view('donasi.create',compact('bencana'));
     }
 
     /**
@@ -55,7 +57,7 @@ class DonasiController extends Controller
             'provinsi'=>'required',
             'jenis'=>'required',
             'namabarang'=>'required',
-            'jmlbarang'=>'required|integer'
+            'jmlbarang'=>'required'
         ]);
         $donasi = new donasi([
             'status'=>'Diajukan',
@@ -64,17 +66,23 @@ class DonasiController extends Controller
             'kabupaten'=>$request->post('kabupaten'),
             'provinsi'=>$request->post('provinsi'),
             'id_donatur'=>Auth::user()->id,
-            'id_bencana'=>'1',
+            'id_bencana'=>$request->post('id_bencana'),
         ]);
-        // $barang = new barang([
-        //     'kode_donasi'=>$request->post('kode_donasi'),
-        //     'jenis'=>$request->post('jenis'),
-        //     'namabarang'=>$request->post('namabarang'),
-        //     'jmlbarang'=>$request->post('jmlbarang')
-        // ]);
-
         $donasi->save();
-        //$barang->save();
+        $xjenis = $request->jenis;
+        $xnama = $request->namabarang;
+        $xjumlah = $request->jmlbarang;
+        $count = count($xjenis);
+        for($i=0;$i<$count;$i++)
+        {
+            $barang = new barang();
+            $barang->jenis = $xjenis[$i];
+            $barang->nama = $xnama[$i];
+            $barang->jumlah = $xjumlah[$i];
+            $donasi->barang()->save($barang);        
+            
+        }
+
         return redirect('/donasi')->with('succes','berhasil');
     }
 

@@ -11,7 +11,13 @@
                     <div class='card-body'>
                         <div class='row'>
                             <div class='col-md-12'>
-                                 <form method="post" action="{{ route('donasi.store') }}" name="add_donasi" id="add_donasi">
+                                
+                                <div class='form-group'>
+                                    <label for="Nama Bencana">Bencana : </label>
+                                    <span><strong>{{$bencana->nama_bencana}}</strong></span>
+                                </div>
+
+                                 <form method="post" action="" name="add_donasi" id="add_donasi">
                                 @csrf
 
                                 <div class='form-group'>
@@ -33,30 +39,31 @@
                                   <label for="provinsi">Provinsi</label>
                                   <input type="text" class='form-control' name="provinsi" id="provinsi" required>
                                 </div>     
-
+                                <input class='invisible' type="number" name="id_bencana" id="id_bencana" value='{{$bencana->id}}'>
+                                    
                                 <hr>
 
                                 <h3 for="barang">Barang </h3>
                                 <div class='form-group' id='dynamic_field'>
                                  
                                         <label for="Jenis">Jenis Barang</label>
-                                        <select class='form-control' name="jenis" >
+                                        <select class='form-control' name="jenis[]" >
                                             <option value="distribusi">Barang Siap Distribusi</option>
                                             <option value="aksi">Barang Aksi Kemanusiaan</option>
                                             <option value="bernilai">Barang Bernilai</option>
                                         </select>  
                                     
                                         <label for="namabarang">Nama Barang</label>
-                                        <input class='form-control' type="text" name="namabarang" >
+                                        <input class='form-control' type="text" name="namabarang[]" >
                                     
                                         <label for="jumlahbrg">Jumlah Barang</label>
-                                        <input class='form-control' type="number" name="jmlbarang" >
-                                    
+                                        <input class='form-control' type="number" name="jmlbarang[]" >
+                                       
                                 </div> 
                                     
                                     <button type="button" name="add" id="add" class='btn btn-success'>Tambah</button>
 
-                                <input type="submit" class="btn btn-primary" value="Submit" >
+                                <input type="button" id="submit" name='submit' class="btn btn-primary" value="Submit" >
                               </form>
                            </div>
                         </div>
@@ -67,46 +74,42 @@
 
         <script type="text/javascript">
             $(document).ready(function(){   
-            var postURL = "<?php echo url('donasi'); ?>";   
+            var postURL = "{{ route('donasi.store') }}";   
             var i=1;  
 
 
-            $('#add').click(function(){  
-                i++;  
-                $('#dynamic_field').append('<div id="field'+i+'"><br><h3 for="barang">Barang</h3> <hr><label for="Jenis">Jenis Barang</label><select class="form-control" name="jenis[]" id="jenis"><option value="distribusi">Barang Siap Distribusi</option><option value="aksi">Barang Aksi Kemanusiaan</option><option value="bernilai">Barang Bernilai</option></select><label for="namabarang">Nama Barang</label><input class="form-control" type="text" name="namabarang[]" id="namabarang"><label for="jumlahbrg">Jumlah Barang</label><input class="form-control" type="number" name="jmlbarang[]" id="jmlbarang"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');  
-            
-            });  
-
-
-            $(document).on('click', '.btn_remove', function(){  
-                var button_id = $(this).attr("id");   
-                $('#field'+button_id+'').remove();  
-            });     
-
-           /* $('#submit').click(function(){            
-                $.ajax({  
-                        url:postURL,  
-                        method:"POST",  
-                        data:$('#add_donasi').serialize(),
-                        type:'json',
-                        success:function(data)  
-                        {
-                            if(data.error){
-                                printErrorMsg(data.error);
-                            }else{
-                                i=1;
-                                $('.dynamic-added').remove();
-                                $('#add_donasi')[0].reset();
-                                $(".print-success-msg").find("ul").html('');
-                                $(".print-success-msg").css('display','block');
-                                $(".print-error-msg").css('display','none');
-                                $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-                            }
-                        }  
+                $('#add').click(function(){  
+                    i++;  
+                    $('#dynamic_field').append('<div id="field'+i+'"><br><h3 for="barang">Barang</h3> <hr><label for="Jenis">Jenis Barang</label><select class="form-control" name="jenis[]" id="jenis"><option value="distribusi">Barang Siap Distribusi</option><option value="aksi">Barang Aksi Kemanusiaan</option><option value="bernilai">Barang Bernilai</option></select><label for="namabarang">Nama Barang</label><input class="form-control" type="text" name="namabarang[]" id="namabarang"><label for="jumlahbrg">Jumlah Barang</label><input class="form-control" type="number" name="jmlbarang[]" id="jmlbarang"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');  
+                
                 });  
-            });  
 
-*/
+
+                $(document).on('click', '.btn_remove', function(){  
+                    var button_id = $(this).attr("id");   
+                    $('#field'+button_id+'').remove();  
+                });     
+                
+            $('#submit').click(function(){            
+                    $.ajax({  
+                            url:postURL,  
+                            method:"POST",  
+                            data:$('#add_donasi').serialize(),
+                            type:'json',
+                            success:function(data)  
+                            {
+                                if(data.error){
+                                    printErrorMsg(data.error);
+                                }else{
+                                    i=1;
+                                    alert(data);
+                                    $('#add_donasi')[0].reset();
+                                }
+                            } 
+                            
+                    });  
+                });  
+                    
           });  
       </script>
     @endsection
