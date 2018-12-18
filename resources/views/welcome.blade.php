@@ -40,7 +40,7 @@
             <a class="nav-link" href="/donasi" style="color: white">Donasi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="#">Lacak</a>
+            <a class="nav-link" style="color: white" href="/lacak">Lacak</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle"  style="color: white" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tentang</a>

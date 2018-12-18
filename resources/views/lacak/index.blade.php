@@ -34,20 +34,14 @@
                                     <tr>
                                         <td>id</td>
                                         <td>ID Bencana</td>
-                                        <td>Diajukan</td>
+                                        <td>Tanggal Pengajuan</td>
                                         <td>Alamat</td>
-                                        <td>Nomor Resi</td>
                                         <td>Status</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>{{$donasi->kode_donasi}}</td>
-                                        <td>{{$donasi->id_bencana}}</td>
-                                        <td>{{$donasi->created_at->format('d/m/Y')}}</td>
-                                        <td>{{$donasi->alamat}}</td>
-                                        <td>{{$donasi->no_resi}}</td>
-                                        <td>{{$donasi->status}}</td> 
+                                    <tr id="fill">
+                                       
                                     </tr>
                                 </tbody>
                                 </table>
@@ -69,9 +63,28 @@
                         url: cariURL,    
                         data:$('#resi').serialize(),
                         type:'json',                      
-                        success: function(response){                    
-                         
-                            alert(response);
+                        success: function(response){  
+                            $('#fill').html("");                  
+                            var hasil = JSON.parse(response);
+                            if(hasil.length!=0){
+                                $(hasil).each(
+                                function() {
+                                    $('#fill').append(
+                                            '<td>'+ this.kode_donasi
+                                                    + '</td><td>'
+                                                    + this.id_bencana
+                                                    + '</td><td>'
+                                                    + this.created_at
+                                                    + '</td><td>'
+                                                    + this.alamat
+                                                    + '</td><td>'
+                                                    + this.status
+                                                    + '</td></tr>')
+                                });
+                            }else{
+                                $('#fill').append('<td colspan="5">Data Tidak Ditemukan</td>');
+
+                            }
                         }
 
                    });
