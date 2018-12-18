@@ -35,7 +35,7 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $fileNameWithExt = $request->file('gambar')->getClientOriginalName();
-        $path = $request->file('gambar')->storeAs('public/',$fileNameWithExt);
+        $path = $request->file('gambar')->storeAs('public/gambar',$fileNameWithExt);
         return redirect('/');
     }
 

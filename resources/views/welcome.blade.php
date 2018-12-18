@@ -7,6 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
+    <link rel="shortcut icon" type="image/png" href="/storage/gambar/favicon-16x16.png"/>
     <title>Sistem Jemput Bantuan</title>
 
     <!-- Bootstrap core CSS -->
@@ -109,7 +110,7 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="first-slide" src="{{ asset('Storage/1.jpg')	}}" alt="First slide">
+              <img class="first-slide" src="/storage/gambar/1.jpg" alt="First slide">
               <div class="container">
                 <div class="carousel-caption text-left">
                   <h1>Indonesia Bersama Palestina</h1>
@@ -119,7 +120,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img class="second-slide" src="{{ asset('Storage/2.jpg')	}}" alt="Second slide">
+              <img class="second-slide" src="/storage/gambar/2.jpg" alt="Second slide">
               <div class="container">
                 <div class="carousel-caption">
                   <h1>Peduli Perbatasan</h1>
@@ -129,7 +130,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img class="third-slide" src="{{ asset('Storage/3.jpg')	}}" alt="Third slide">
+              <img class="third-slide" src="/storage/gambar/3.jpg" alt="Third slide">
               <div class="container">
                 <div class="carousel-caption text-right">
                   <h1>Gotong Royong Hadapi Bencana.</h1>

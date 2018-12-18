@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+	<link rel="shortcut icon" type="image/png" href="/storage/gambar/favicon-16x16.png"/>
     <title>{{ config('app.name', 'JEMBATAN') }}</title>
 
     <!-- Scripts -->
@@ -29,7 +30,7 @@
 				<div class="card">
 					<div class='card-body'>
 						<div class='col-md-6 offset-md-3'> 
-							<img class='mx-auto d-block' src="{{ asset('storage/logo.png')	}}" alt="logo" width="72" height="72">
+							<img class='mx-auto d-block' src="/storage/gambar/logo.png" alt="logo" width="72" height="72">
 							<form class="form-signin" method="POST" action="{{ route('login') }}">
 								@csrf
 
