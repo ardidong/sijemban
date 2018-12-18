@@ -60,8 +60,9 @@
                                         <input class='form-control' type="number" name="jmlbarang[]" >
                                        
                                 </div> 
-                                    
-                                    <button type="button" name="add" id="add" class='btn btn-success'>Tambah</button>
+                                <div class="mb-2">
+                                    <button type="button" name="add" id="add" class='btn btn-success'>Tambah Barang</button>
+                                </div>    
 
                                 <input type="button" id="submit" name='submit' class="btn btn-primary" value="Submit" >
                               </form>
@@ -80,7 +81,7 @@
 
                 $('#add').click(function(){  
                     i++;  
-                    $('#dynamic_field').append('<div id="field'+i+'"><br><h3 for="barang">Barang</h3> <hr><label for="Jenis">Jenis Barang</label><select class="form-control" name="jenis[]" id="jenis"><option value="distribusi">Barang Siap Distribusi</option><option value="aksi">Barang Aksi Kemanusiaan</option><option value="bernilai">Barang Bernilai</option></select><label for="namabarang">Nama Barang</label><input class="form-control" type="text" name="namabarang[]" id="namabarang"><label for="jumlahbrg">Jumlah Barang</label><input class="form-control" type="number" name="jmlbarang[]" id="jmlbarang"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');  
+                    $('#dynamic_field').append('<div id="field'+i+'"><br><h3 for="barang">Barang</h3> <hr><label for="Jenis">Jenis Barang</label><select class="form-control" name="jenis[]" id="jenis"><option value="distribusi">Barang Siap Distribusi</option><option value="aksi">Barang Aksi Kemanusiaan</option><option value="bernilai">Barang Bernilai</option></select><label for="namabarang">Nama Barang</label><input class="form-control" type="text" name="namabarang[]" id="namabarang"><label for="jumlahbrg">Jumlah Barang</label><input class="form-control" type="number" name="jmlbarang[]" id="jmlbarang"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove offset-md-11 mt-3">X</button></div>');  
                 
                 });  
 

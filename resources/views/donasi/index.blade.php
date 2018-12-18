@@ -32,8 +32,8 @@
           </div>
           
           <h2>Riwayat Donasi</h2>
+          <button  id='detail' nama='detail' class="btn btn-outline-primary mb-2">Detail </button>
           <div class="table-responsive">
-            <button  id='detail' nama='detail' class="btn btn-outline-primary mb-2">Detail </button>
             <table id='riwayat' class="table table-striped table-bordered" style="width:100%">
               <thead>
                   <tr>
@@ -43,7 +43,6 @@
                     <td>Alamat</td>
                     <td>Nomor Resi</td>
                     <td>Status</td>
-                    <td colspan="2">Action</td>
                   </tr>
               </thead>
               <tbody>
@@ -55,8 +54,7 @@
                       <td>{{$donasi->alamat}}</td>
                       <td>{{$donasi->no_resi}}</td>
                       <td>{{$donasi->status}}</td>
-                      <!--<td><a href="{{ route('donasi.show',$donasi->kode_donasi)}}" >Detail</a></td>
-                      -->
+                     
                   </tr>
                   @endforeach
               </tbody>

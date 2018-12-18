@@ -106,6 +106,6 @@ class PetugasController extends Controller
         $petugas = User::find($id);
         $petugas->delete();
 
-        return redirect('petugas.index')->with('success', 'Petugas berhasil dihapus');
+        return redirect('/petugas')->with('success', 'Petugas berhasil dihapus');
     }
 }

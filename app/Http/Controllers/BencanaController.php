@@ -15,6 +15,8 @@ class BencanaController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles('admin');
+        $bencanas = Bencana::all();
+        return view('bencana.index',compact('bencanas'));
     }
 
     /**
@@ -63,6 +65,7 @@ class BencanaController extends Controller
         ]);
         $bencana->save();
     }
+    
 
     /**
      * Display the specified resource.
@@ -83,7 +86,17 @@ class BencanaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bencana = Bencana::find($id);
+        if($bencana->status=='Diunggah')
+        {
+            $bencana->status ='Ditampilkan';
+            $bencana->save();
+        }else
+        {
+            $bencana->status ='Diunggah';
+            $bencana->save();
+        }
+        return redirect('bencana')->with('succes','Status diubah');
     }
 
     /**
@@ -97,6 +110,12 @@ class BencanaController extends Controller
     {
         //
     }
+
+    public function ubah(Request $request, $id)
+    {
+
+    }
+
 
     /**
      * Remove the specified resource from storage.

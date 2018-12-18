@@ -83,7 +83,6 @@
         </div>
         <div class="modal-footer">
           
-         <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
       </div>
     </div>
   </div>
@@ -119,9 +118,9 @@
           var data = table.rows('.selected').data();
           if(data[0][5]=='Diajukan'){
             $(".modal-body").append("<b>Apakah anda yakin ingin melakukan verikasi?</b>");
-            $(".modal-footer").append('<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button> <button type="button" class="btn btn-primary" id="klikverif" >Simpan</button>');
-            $("#myModal").modal('options ');
-            $('#klikverif').click( function () {
+            $(".modal-footer").append('<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button> <button type="button" class="btn btn-primary" id="save" >Simpan</button>');
+            $("#myModal").modal('handleUpdate');
+            $('#save').click( function () {
               var data = table.rows('.selected').data();
               var lokasi = "{{ route('jemput.edit', 'id') }}";
               lokasi = lokasi.replace('id',data[0][1]);
@@ -131,7 +130,7 @@
           }else{
             $(".modal-body").append("<b>Donasi Sudah diverifikasi</b>");
             $(".modal-footer").append('<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>');
-            $("#myModal").modal('options ');
+            $("#myModal").modal('handleUpdate');
           }
         } );
         

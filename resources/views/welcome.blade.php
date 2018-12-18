@@ -24,23 +24,23 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-white fixed-top" style="background-color: #EB413D;">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #EB413D;">
       <a class="navbar-brand" href="{{route('home')}}" style="color: white; font-weight: bold;">JEMBATAN</a>    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
          <!-- Left Side Of Navbar -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html" style="color: white">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/donasi" style="color: white">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="donasi.html" style="color: white">Donasi</a>
+            <a class="nav-link" href="/donasi" style="color: white">Donasi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="#">Aktivitas Kami</a>
+            <a class="nav-link" style="color: white" href="#">Lacak</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle"  style="color: white" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tentang</a>
@@ -155,6 +155,7 @@
               <div class="row">
               
                 @foreach($bencanas as $bencana)
+                @if($bencana->status=="Ditampilkan")
                 <div class="col-md-4">
                   <div class="card mb-4 shadow-sm">
                     <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="Card image cap">
@@ -164,22 +165,13 @@
                         <div class="btn-group">
                         <a href="donasi/create/{{$bencana->id }} " class="btn btn-danger btn active" role="button" aria-pressed="true">Donasi</a>
                         </div>
-                        <small class="text-muted">9 mins</small>
+                        <div data-countdown="{{$bencana->batas_waktu}}"></div>
                       </div>
                     </div>
                   </div>
                 </div>
-                @endforeach
-
-               
-
-                
-    
-              
-
-               
-
-                             
+                @endif
+                @endforeach           
               </div>
             </div>
           </div>
@@ -194,9 +186,17 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="Public/bootsrap-4.1.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="Public/bootsrap-4.1.3/assets/js/vendor/popper.min.js"></script>
-    <script src="Public/bootsrap-4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
+    <script>
+
+    
+      $('[data-countdown]').each(function() {
+        var $this = $(this), finalDate = $(this).data('countdown');
+          $this.countdown(finalDate, function(event) {
+            $this.html(event.strftime('%D days'));
+          });
+      });
+    
+    </script>
   </body>
 </html>

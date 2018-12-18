@@ -96,7 +96,8 @@ class DonasiController extends Controller
     {
         $request->user()->authorizeRoles('donator');
         $donasis = Donasi::find($id);
-        return view('donasi.show',compact('donasis'));
+        $barang = Barang::all()->where('kode_donasi',$id);
+        return view('donasi.show',compact('donasis','barang'));
     }
 
     /**
@@ -137,30 +138,6 @@ class DonasiController extends Controller
     }
 
     public function tambahBarang(Request $request){
-        $rules = [];
-
-
-        foreach($request->input('name') as $key => $value) {
-            $rules["name.{$key}"] = 'required';
-        }
-
-
-        $validator = Validator::make($request->all(), $rules);
-
-
-        if ($validator->passes()) {
-
-
-            foreach($request->input('name') as $key => $value) {
-                TagList::create(['name'=>$value]);
-            }
-
-
-            return response()->json(['success'=>'done']);
-        }
-
-
-        return response()->json(['error'=>$validator->errors()->all()]);
     }
 
 }

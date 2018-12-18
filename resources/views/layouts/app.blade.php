@@ -32,9 +32,9 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-md navbar-white shadow-sm  sticky-top" style="background-color: #EB413D;">
+    <nav class="navbar navbar-expand-md navbar-dark shadow-sm  sticky-top" style="background-color: #EB413D;">
       <a class="navbar-brand" href="{{ route('home')}}" style="color: white; font-weight: bold;">JEMBATAN</a>    
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -42,7 +42,7 @@
          <!-- Left Side Of Navbar -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html" style="color: white">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/donasi" style="color: white">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="donasi.html" style="color: white">Donasi</a>
@@ -82,6 +82,9 @@
                   </a>
 
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        
+                      <a class="dropdown-item" href="">Dashboard</a>
+                    
                       <a class="dropdown-item " href="{{ route('logout') }}"
                           onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -91,6 +94,8 @@
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                           @csrf
                       </form>
+                      
+
                   </div>
               </li>
           @endguest
