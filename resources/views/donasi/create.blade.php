@@ -103,8 +103,8 @@
                                     printErrorMsg(data.error);
                                 }else{
                                     i=1;
-                                    alert(data);
                                     $('#add_donasi')[0].reset();
+                                    window.location.replace("/donasi");
                                 }
                             } 
                             
