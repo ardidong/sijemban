@@ -39,6 +39,13 @@
                                   <label type="text" class='form-control' name="status" id="status" value='' >{{ $donasis->status}}</label>
                                 </div>    
 
+                                @if($donasis->status=="Dijemput")
+                                <div class='form-group'>
+                                  <label for="status">Dijemput pada :</label>
+                                  <label type="text" class='form-control' name="status" id="status" value='' >{{$donasis->updated_at->format('d/m/Y')}}</label>
+                                </div>    
+                                @endif
+
                                 <hr>
 
                                 <h3 for="barang">Barang</h3>
@@ -63,6 +70,7 @@
                                     
                                         <label for="jumlahbrg">Jumlah Barang</label>
                                         <label class='form-control' type="number" name="jmlbarang" >{{$brg->jumlah}}</label>
+                                        
                                     @endforeach
                                 </div> 
                               </form>

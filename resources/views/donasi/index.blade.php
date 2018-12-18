@@ -54,7 +54,7 @@
                       <td>{{$donasi->alamat}}</td>
                       <td>{{$donasi->no_resi}}</td>
                       <td>{{$donasi->status}}</td>
-                     
+                      
                   </tr>
                   @endforeach
               </tbody>
