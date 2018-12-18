@@ -2,6 +2,7 @@
 
 namespace JEMBATAN\Http\Controllers;
 
+use JEMBATAN\Donasi;
 use Illuminate\Http\Request;
 
 class LacakController extends Controller
@@ -21,9 +22,11 @@ class LacakController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $resi = $request->noResi;
+        $donasi = Donasi::all()->where('no_resi',$resi);
+        return $donasi->toJson();
     }
 
     /**
@@ -43,9 +46,9 @@ class LacakController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        
     }
 
     /**
