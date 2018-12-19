@@ -5,6 +5,7 @@ namespace JEMBATAN\Http\Controllers;
 use Illuminate\Http\Request;
 use JEMBATAN\Donasi;
 use JEMBATAN\Barang ;
+use JEMBATAN\User;
 use Illuminate\Support\Str;
 
 class JemputController extends Controller
@@ -54,7 +55,8 @@ class JemputController extends Controller
      
         $donasis = Donasi::find($id);
         $barang = Barang::all()->where('kode_donasi',$id);
-        return view('donasi.show',compact('donasis','barang'));
+        $donatur = User::all()->where('id',$donasis->id_donatur);
+        return view('jemput.show',compact('donasis','barang','donatur'));
     }
 
     public function verifikasi($id)

@@ -13,7 +13,7 @@
                               <form method="post" >
                                 @method('PATCH')
                                 @csrf
-
+                            
                                 <div class='form-group'>
                                   <label for="Alamat">Alamat :</label>
                                   <label trype="text" class='form-control' name="alamat" id="alamat" value='' >{{ $donasis->alamat }}</label>
