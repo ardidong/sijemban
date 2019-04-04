@@ -3,6 +3,7 @@
 namespace JEMBATAN\Http\Controllers\Auth;
 
 use JEMBATAN\User;
+use JEMBATAN\Role;
 use JEMBATAN\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'alamat' => $data['alamat'],

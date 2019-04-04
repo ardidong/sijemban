@@ -85,7 +85,7 @@
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     
                     @if(Auth::user()->hasRole('admin'))   
-                        <a class="dropdown-item" href="{{route('bencana')}}">Dashboard</a>
+                        <a class="dropdown-item" href="{{route('bencana.index')}}">Dashboard</a>
                     @elseif((Auth::user()->hasRole('petugas')))
                         <a class="dropdown-item" href="{{route('jemput.index')}}">Dashboard</a>
                     @endif
