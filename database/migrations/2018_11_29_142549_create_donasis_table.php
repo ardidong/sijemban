@@ -21,7 +21,7 @@ class CreateDonasisTable extends Migration
             $table->string('kabupaten');
             $table->string('provinsi');
             $table->string('no_resi')->nullable();
-            $table->date('tanggal_jemput')->nullable();
+            $table->datetime('tanggal_jemput')->nullable();
             $table->integer('id_donatur')->unsigned();
             $table->integer('id_bencana')->unsigned();
             $table->integer('id_petugas')->nullable();

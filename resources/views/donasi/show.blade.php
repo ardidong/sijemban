@@ -39,12 +39,16 @@
                                   <label type="text" class='form-control' name="status" id="status" value='' >{{ $donasis->status}}</label>
                                 </div>    
 
-                                @if($donasis->status=="Dijemput")
                                 <div class='form-group'>
-                                  <label for="status">Dijemput pada :</label>
-                                  <label type="text" class='form-control' name="status" id="status" value='' >{{$donasis->updated_at->format('d/m/Y')}}</label>
+                                  <label for="Diajukan Pada">Diajukan Pada :</label>
+                                  <label type="text" class='form-control' name="diajukan" id="diajukan" value='' >{{ $donasis->created_at}}</label>
                                 </div>    
-                                @endif
+
+                                <div class='form-group'>
+                                  <label for="Dijemput Pada">Dijemput Pada :</label>
+                                  <label type="text" class='form-control' name="dijemput" id="dijemput" value='' >{{ $donasis->tanggal_jemput}}</label>
+                                </div>    
+
 
                                 <hr>
 

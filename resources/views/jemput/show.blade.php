@@ -39,6 +39,17 @@
                                   <label type="text" class='form-control' name="status" id="status" value='' >{{ $donasis->status}}</label>
                                 </div>    
 
+                                <div class='form-group'>
+                                  <label for="Diajukan Pada">Diajukan Pada :</label>
+                                  <label type="text" class='form-control' name="diajukan" id="diajukan" value='' >{{ $donasis->created_at}}</label>
+                                </div>    
+
+                                <div class='form-group'>
+                                  <label for="Dijemput Pada">Dijemput Pada :</label>
+                                  <label type="text" class='form-control' name="dijemput" id="dijemput" value='' >{{ $donasis->tanggal_jemput}}</label>
+                                </div>    
+
+
                                 <hr>
 
                                 <h3 for="barang">Barang</h3>

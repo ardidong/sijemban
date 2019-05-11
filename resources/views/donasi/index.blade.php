@@ -40,6 +40,7 @@
                     <td>id</td>
                     <td>ID Bencana</td>
                     <td>Diajukan</td>
+                    <td>Dijemput</td>
                     <td>Alamat</td>
                     <td>Nomor Resi</td>
                     <td>Status</td>
@@ -50,7 +51,8 @@
                   <tr>
                       <td>{{$donasi->kode_donasi}}</td>
                       <td>{{$donasi->id_bencana}}</td>
-                      <td>{{$donasi->created_at->format('d/m/Y')}}</td>
+                      <td>{{$donasi->created_at}}</td>
+                      <td>{{$donasi->tanggal_jemput}}</td>
                       <td>{{$donasi->alamat}}</td>
                       <td>{{$donasi->no_resi}}</td>
                       <td>{{$donasi->status}}</td>

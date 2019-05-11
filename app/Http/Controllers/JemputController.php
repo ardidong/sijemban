@@ -7,6 +7,7 @@ use JEMBATAN\Donasi;
 use JEMBATAN\Barang ;
 use JEMBATAN\User;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class JemputController extends Controller
 {
@@ -75,6 +76,7 @@ class JemputController extends Controller
         $verif = Donasi::find($id);
         $verif->status ='Dijemput';
         $verif->no_resi = Str::random();
+        $verif->tanggal_jemput = Carbon::now()->toDateTimeString();
         $verif->save();
         return redirect()->intended(route(' jemput'));
     }
