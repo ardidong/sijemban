@@ -120,7 +120,7 @@
 
         $('#verifikasi').click( function () {
           var data = table.rows('.selected').data();
-          if(data[0][5]=='Diajukan'){
+          if(data[0][7]=='Diajukan'){
             $(".modal-body").append("<b>Apakah anda yakin ingin melakukan verikasi?</b>");
             $(".modal-footer").append('<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button> <button type="button" class="btn btn-primary" id="save" >Simpan</button>');
             $("#myModal").modal('handleUpdate');
