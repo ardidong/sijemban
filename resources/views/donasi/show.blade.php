@@ -16,23 +16,12 @@
 
                                 <div class='form-group'>
                                   <label for="Alamat">Alamat :</label>
-                                  <label trype="text" class='form-control' name="alamat" id="alamat" value='' >{{ $donasis->alamat }}</label>
-                                </div> 
+                                  <textarea  class='form-control' name="" id="" cols="30" rows="3">{{ $donasis->alamat }}</textarea>
+                                </div>    
 
-                                <div class='form-group'>
-                                  <label for="kecamatan">Kecamatan :</label>
-                                  <label type="text" class='form-control' name="kecamatan" id="kecamatan" value=''>{{ $donasis->kecamatan}}</label>
-                                </div>     
+                                <div id='map-canvas'>
 
-                                <div class='form-group'>
-                                  <label for="kabupaten">Kabupaten :</label>
-                                  <label type="text" class='form-control' name="kabupaten" id="kabupaten" value='' >{{ $donasis->kabupaten}}</label>
-                                </div>     
-
-                                <div class='form-group'>
-                                  <label for="provinsi">Provinsi :</label>
-                                  <label type="text" class='form-control' name="provinsi" id="provinsi" value='' >{{ $donasis->provinsi}}</label>
-                                </div>     
+                                </div>
 
                                 <div class='form-group'>
                                   <label for="status">Status :</label>
@@ -84,5 +73,41 @@
                 </div>
             </div>
         </div>  
+        <style>
+            #map-canvas {
+                width: 100%;
+                height: 250px;
+            }
+        </style>
+        <script >
+          var map;
+function initMap(){
+  var donasi = {!! json_encode($donasis->toArray()) !!};
+  var myLatlng = new google.maps.LatLng(donasi.latitude, donasi.longitude);
+
+
+
+
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+      center: myLatlng,
+      zoom: 13
+    });
+
+    var marker = new google.maps.Marker({
+			    position: myLatlng,
+			    map: map,
+			});
+          
+  }  
+
+
+
+    
+          
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6vGzt-YmKpCg-WwAL-FJ7VQ1N9QZzM3U&callback=initMap">
+        </script>
     @endsection
-       
+    
+    

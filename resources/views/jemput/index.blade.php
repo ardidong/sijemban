@@ -41,6 +41,7 @@
                     <td>ID Donatur</td>
                     <td>ID Donasi</td>
                     <td>ID Bencana</td>
+                    <td>Alamat</td>
                     <td>Diajukan</td>
                     <td>Dijemput</td>
                     <td>Nomor Resi</td>
@@ -53,6 +54,7 @@
                     <td>{{$donasi->id_donatur}}</td>
                     <td>{{$donasi->kode_donasi}}</td>
                     <td>{{$donasi->id_bencana}}</td>
+                    <td>{{$donasi->alamat}}</td>
                     <td>{{$donasi->created_at}}</td>
                     <td>{{$donasi->tanggal_jemput}}</td>
                     <td>{{$donasi->no_resi}}</td>

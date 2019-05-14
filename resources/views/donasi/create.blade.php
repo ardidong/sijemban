@@ -24,22 +24,13 @@
                                   <label for="Alamat">Alamat</label>
                                   <textarea class='form-control' name="alamat" id="alamat" required></textarea>
                                 </div> 
-
-                                <div class='form-group'>
-                                  <label for="kecamatan">Kecamatan</label>
-                                  <input type="text" class='form-control' name="kecamatan" id="kecamatan" required>
-                                </div>     
-
-                                <div class='form-group'>
-                                  <label for="kabupaten">Kabupaten</label>
-                                  <input type="text" class='form-control' name="kabupaten" id="kabupaten" required>
-                                </div>     
-
-                                <div class='form-group'>
-                                  <label for="provinsi">Provinsi</label>
-                                  <input type="text" class='form-control' name="provinsi" id="provinsi" required>
-                                </div>     
+                                
+                                <div id="map-canvas">
+                                </div>
+                                 
                                 <input class='invisible' type="number" name="id_bencana" id="id_bencana" value='{{$bencana->id}}'>
+                                <input class='invisible' type="text" name="latitude" id="latitude">
+                                <input class='invisible' type="text" name="longitude" id="longitude">
                                     
                                 <hr>
 
@@ -73,24 +64,34 @@
             </div>
         </div>
 
+        <style>
+            #map-canvas {
+                width: 100%;
+                height: 250px;
+            }
+        </style>
+        <script src="{{ asset('js/map.js') }}" ></script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6vGzt-YmKpCg-WwAL-FJ7VQ1N9QZzM3U&callback=initMap">
+        </script>
         <script type="text/javascript">
             $(document).ready(function(){   
             var postURL = "{{ route('donasi.store') }}";   
             var i=1;  
 
 
-                $('#add').click(function(){  
-                    i++;  
-                    $('#dynamic_field').append('<div id="field'+i+'"><br><h3 for="barang">Barang</h3> <hr><label for="Jenis">Jenis Barang</label><select class="form-control" name="jenis[]" id="jenis"><option value="distribusi">Barang Siap Distribusi</option><option value="aksi">Barang Aksi Kemanusiaan</option><option value="bernilai">Barang Bernilai</option></select><label for="namabarang">Nama Barang</label><input class="form-control" type="text" name="namabarang[]" id="namabarang"><label for="jumlahbrg">Jumlah Barang</label><input class="form-control" type="number" name="jmlbarang[]" id="jmlbarang"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove offset-md-11 mt-3">X</button></div>');  
+            $('#add').click(function(){  
+                i++;  
+                $('#dynamic_field').append('<div id="field'+i+'"><br><h3 for="barang">Barang</h3> <hr><label for="Jenis">Jenis Barang</label><select class="form-control" name="jenis[]" id="jenis"><option value="distribusi">Barang Siap Distribusi</option><option value="aksi">Barang Aksi Kemanusiaan</option><option value="bernilai">Barang Bernilai</option></select><label for="namabarang">Nama Barang</label><input class="form-control" type="text" name="namabarang[]" id="namabarang"><label for="jumlahbrg">Jumlah Barang</label><input class="form-control" type="number" name="jmlbarang[]" id="jmlbarang"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove offset-md-11 mt-3">X</button></div>');  
                 
-                });  
+            });  
 
 
-                $(document).on('click', '.btn_remove', function(){  
-                    var button_id = $(this).attr("id");   
-                    $('#field'+button_id+'').remove();  
-                });     
-                
+            $(document).on('click', '.btn_remove', function(){  
+                var button_id = $(this).attr("id");   
+                $('#field'+button_id+'').remove();  
+            });     
+            
             $('#submit').click(function(){            
                     $.ajax({  
                             url:postURL,  

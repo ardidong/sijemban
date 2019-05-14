@@ -19,20 +19,7 @@
                                   <label trype="text" class='form-control' name="alamat" id="alamat" value='' >{{ $donasis->alamat }}</label>
                                 </div> 
 
-                                <div class='form-group'>
-                                  <label for="kecamatan">Kecamatan :</label>
-                                  <label type="text" class='form-control' name="kecamatan" id="kecamatan" value=''>{{ $donasis->kecamatan}}</label>
-                                </div>     
-
-                                <div class='form-group'>
-                                  <label for="kabupaten">Kabupaten :</label>
-                                  <label type="text" class='form-control' name="kabupaten" id="kabupaten" value='' >{{ $donasis->kabupaten}}</label>
-                                </div>     
-
-                                <div class='form-group'>
-                                  <label for="provinsi">Provinsi :</label>
-                                  <label type="text" class='form-control' name="provinsi" id="provinsi" value='' >{{ $donasis->provinsi}}</label>
-                                </div>     
+                       
 
                                 <div class='form-group'>
                                   <label for="status">Status :</label>

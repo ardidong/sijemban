@@ -52,9 +52,8 @@ class DonasiController extends Controller
     {
         $request->validate([
             'alamat'=>'required',
-            'kecamatan'=>'required',
-            'kabupaten'=>'required',
-            'provinsi'=>'required',
+            'latitude'=>'required',
+            'longitude'=>'required',
             'jenis'=>'required',
             'namabarang'=>'required',
             'jmlbarang'=>'required'
@@ -62,9 +61,8 @@ class DonasiController extends Controller
         $donasi = new donasi([
             'status'=>'Diajukan',
             'alamat'=>$request->post('alamat'),
-            'kecamatan'=>$request->post('kecamatan'),
-            'kabupaten'=>$request->post('kabupaten'),
-            'provinsi'=>$request->post('provinsi'),
+            'latitude'=>$request->post('latitude'),
+            'longitude'=>$request->post('longitude'),
             'id_donatur'=>Auth::user()->id,
             'id_bencana'=>$request->post('id_bencana'),
         ]);
