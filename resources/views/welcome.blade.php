@@ -167,13 +167,16 @@
         <div class="container" style="height: 100px; margin-top:-100px; color:#ffffff; font-size:20px;">
           <div class="row">
             <div class="col-sm">
-              Jumlah Barang Yang Diberikan
+              Jumlah Barang Diberikan
+              <br>{{$total2}}</br>
             </div>
             <div class="col-sm">
-              Jumlah Bencana Yang Terjadi
+              Jumlah Bencana Terjadi
+              <br>{{$total}}</br>
             </div>
             <div class="col-sm">
-              Banyak Orang Yang Berdonasi
+              Banyak Orang Berdonasi
+              <br>{{$total3}}</br>
             </div>
           </div>
         </div>
@@ -186,7 +189,7 @@
                 <div class="col">
                   <div class="card" style="width: 18rem; margin-bottom:50px; text-align:left;">
                     <a href="#" class="deskirpsi-card" style="color: #196D7C;">
-                      <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="tidak ada gambar">
+                      <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="tidak ada gambar" style="height: 200px">
                       <div class="card-body">
                         <div style="height:45px; overflow: hidden; margin-bottom:20px;">
                           <h5 class="card-title">{{$bencana->nama_bencana}}</h5>
@@ -196,6 +199,11 @@
                         </div>
                       </div>
                     </a>
+                    <div class="card-body" style="height: 50px !important;">
+                    <a href="#" class="card-link">
+                      {{$bencana->batas_waktu->diffForHumans()}}
+                    </a>
+                  </div>
                   </div>
                 </div>
                 <!-- <div class="col-md-4">

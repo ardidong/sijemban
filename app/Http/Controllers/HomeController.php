@@ -3,6 +3,8 @@
 namespace JEMBATAN\Http\Controllers;
 
 use JEMBATAN\Bencana;
+use JEMBATAN\Barang;
+use JEMBATAN\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        
+
     }
 
     /**
@@ -25,6 +27,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $bencanas = Bencana::all();
-        return view('welcome',compact('bencanas'));
+        $total_bencana = Bencana::all()->where('status', '=', 'Ditampilkan')->count();
+        $total_barang = Barang::count();
+        $total_akun = User::count();
+        return view('welcome',compact('bencanas'))->with(['total'=>$total_bencana])->with(['total2'=>$total_barang])->with(['total3'=>$total_akun]);
     }
 }
