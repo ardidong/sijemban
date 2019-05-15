@@ -25,8 +25,8 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #EB413D;">
-      <a class="navbar-brand" href="{{route('home')}}" style="color: white; font-weight: bold;">JEMBATAN</a>    
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #119bff; font-family: verdana;">
+      <a class="navbar-brand" href="{{route('home')}}" style="color: white; font-weight: bold;">JEMBATAN</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -54,14 +54,14 @@
             </div>
           </li>
         </ul>
-        
+
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
 
           <!--Search Links-->
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn" type="button" style="background-color:white; color:#EB413D;">Search</button>
+            <button class="btn" type="button" style="background-color:white; color:#119bff;">Search</button>
           </form>
 
           <!-- Authentication Links -->
@@ -81,7 +81,7 @@
                   </a>
 
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    @if(Auth::user()->hasRole('admin'))   
+                    @if(Auth::user()->hasRole('admin'))
                         <a class="dropdown-item" href="{{route('bencana.index')}}">Dashboard</a>
                     @elseif(Auth::user()->hasRole('petugas'))
                         <a class="dropdown-item" href="{{route('jemput.index')}}">Dashboard</a>
@@ -100,14 +100,14 @@
           @endguest
       </ul>
 
-        
+
       </div>
     </nav>
 
     <main role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -154,19 +154,55 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+        </div> -->
+        <div class="jumbotron jumbotron-fluid" style="background-image: url(homepage.jpg); background-size: cover; height:700px;">
+          <div class="container">
+            <h4 class="display-4" style="color: white; text-align:center; margin-top: 250px;">Donasikan Barang Anda Untuk Orang Yang Membutuhkan</h4>
+          </div>
         </div>
-        
+        <div class="" style="height:100px; background-color: black; margin-top:-150px; opacity: 0.7;">
+
+        </div>
+        <!-- <img src="homepage.jpg" class="img-fluid" alt="Responsive image" style="margin-top:-90px;"> -->
+        <div class="container" style="height: 100px; margin-top:-100px; color:#ffffff; font-size:20px;">
+          <div class="row">
+            <div class="col-sm">
+              Jumlah Barang Yang Diberikan
+            </div>
+            <div class="col-sm">
+              Jumlah Bencana Yang Terjadi
+            </div>
+            <div class="col-sm">
+              Banyak Orang Yang Berdonasi
+            </div>
+          </div>
+        </div>
         <div class="album py-5 bg-light">
             <div class="container">
               <div class="row">
-              
+
                 @foreach($bencanas as $bencana)
                 @if($bencana->status=="Ditampilkan")
-                <div class="col-md-4">
+                <div class="col">
+                  <div class="card" style="width: 18rem; margin-bottom:50px; text-align:left;">
+                    <a href="#" class="deskirpsi-card" style="color: #196D7C;">
+                      <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="tidak ada gambar">
+                      <div class="card-body">
+                        <div style="height:45px; overflow: hidden; margin-bottom:20px;">
+                          <h5 class="card-title">{{$bencana->nama_bencana}}</h5>
+                        </div>
+                        <div  style="height:90px; width:250px; overflow: hidden;">
+                            <p class="card-text">{{$bencana->deskripsi}}</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
                   <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="Card image cap">
+                    <img class="card-img-top" src="" alt="Card image cap">
                     <div class="card-body">
-                      <p class="card-text">{{$bencana->nama_bencana}}</p>
+                      <p class="card-text"></p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                         <a href="donasi/create/{{$bencana->id }} " class="btn btn-danger btn active" role="button" aria-pressed="true">Donasi</a>
@@ -175,13 +211,13 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 @endif
-                @endforeach           
+                @endforeach
               </div>
             </div>
           </div>
-    
+
 
     </main>
 
@@ -195,14 +231,14 @@
     <script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
     <script>
 
-    
+
       $('[data-countdown]').each(function() {
         var $this = $(this), finalDate = $(this).data('countdown');
           $this.countdown(finalDate, function(event) {
             $this.html(event.strftime('%D days'));
           });
       });
-    
+
     </script>
   </body>
 </html>
