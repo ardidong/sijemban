@@ -20,6 +20,7 @@ class CreateBencanasTable extends Migration
             $table->string('deskripsi');   
             $table->string('cover')->nullable(); 
             $table->string('status'); 
+            $table->string('slug',100);
             $table->timestamps();
         });
     }

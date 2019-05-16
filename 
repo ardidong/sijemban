@@ -1,0 +1,143 @@
+[33mcommit a936e077855fa0dadb70241b1d9fb8a20bfb234b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Tue May 14 14:47:17 2019 +0700
+
+    nomor resi
+
+[33mcommit f8b61174604532e4bc88d393eb9d74ebf1b0c598[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Tue May 14 12:59:58 2019 +0700
+
+    Fitur Input Map
+
+[33mcommit 4a7d45097a4a664bccc07ad46aca4fdcddf16804[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Sat May 11 10:29:44 2019 +0700
+
+    tambahan tanggal dijemput
+
+[33mcommit 862efa0ad682f53403d28b5ba235de484eebe1de[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Thu Apr 4 19:05:51 2019 +0700
+
+    Revisi register User
+
+[33mcommit ffe565b48957b9774829fc489bc203a161ca6ca2[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 19 10:32:00 2018 +0700
+
+    coba
+
+[33mcommit 940445ccfa8b521038f603d075f1be8b87bcc3b7[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 19 09:45:52 2018 +0700
+
+    dropdown dashboard
+
+[33mcommit f8e0e3a400156cc3f9015190c388523080b9c968[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 19 08:28:14 2018 +0700
+
+    not login first
+
+[33mcommit dd3e40c5e4bfe09de395bb58844734e28b0f5782[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 19 06:46:46 2018 +0700
+
+    detai pada donasi
+
+[33mcommit 3a382d5551c83dee3aa87d84b75e993afcd48630[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 19 06:21:13 2018 +0700
+
+    link
+
+[33mcommit 90dc57701d96c131c009c859dfa9357d09fb6132[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 19 05:06:26 2018 +0700
+
+    new upload
+
+[33mcommit f43043096881bf4873d75b985d39b2749b23b21f[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 19 04:42:50 2018 +0700
+
+    upload file
+
+[33mcommit 9bb78bf66ec0a5b6a8590ffdd856a71938c4fcff[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 19 04:00:15 2018 +0700
+
+    Lacak fungional
+
+[33mcommit 510cb16b09823d4fad46aa7c39b7048c6697e8aa[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Tue Dec 18 19:24:08 2018 +0700
+
+    lacak added
+
+[33mcommit 5ccd3bbf80052140f9af1263ebd9a7ab5c310f4e[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Tue Dec 18 14:24:45 2018 +0700
+
+    dashboard semua
+
+[33mcommit 2ef96e49b86374409d65ac7ed6fec68b961f3a4f[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Mon Dec 17 21:17:56 2018 +0700
+
+    Add multiple barang sudah bisaa
+
+[33mcommit d7d8a7bb86a45ec32bdf43a2b975eec0bdfc2940[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Sun Dec 16 00:15:39 2018 +0700
+
+    Added Create Bencana, List bencana di halaman awal
+
+[33mcommit 76534845a3061e49893a07b2dfde32af5ddec922[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Thu Dec 13 19:33:59 2018 +0700
+
+    dynamic input pake JS
+
+[33mcommit f9d0e5f939421d827165068db62d35c3ca982c11[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Thu Dec 13 03:28:46 2018 +0700
+
+    Integrasi frontend dan fungsi tambah(belum method post)
+
+[33mcommit 75e677cc90bba9038e05c4db935ba4f79192b0c2[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Wed Dec 12 10:28:06 2018 +0700
+
+    frontend login baru
+
+[33mcommit e220322ffc26258cd46318e6b50c4bb073543e71[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Tue Dec 11 08:07:13 2018 +0700
+
+    added Create, List, Hapus Petugas
+
+[33mcommit 51cef317166775b8d74809fec22599132df5c344[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Mon Dec 10 12:00:00 2018 +0700
+
+    Cara login baru dan tambah role admin
+
+[33mcommit cb68ff603365fc3be2a4198f25e192d935723318[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Sun Dec 9 06:54:23 2018 +0700
+
+    ada tambahan
+
+[33mcommit 7894cc8b52cfd7ce1ae21e0b27517a135a9d86be[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Fri Dec 7 11:06:14 2018 +0700
+
+    Test
+
+[33mcommit c08d3cc70be3ecc70aef384fea81cdfc1d0a2b03[m
+Author: Ardian Dwi Rifai <ardimail101@gmail.com>
+Date:   Thu Dec 6 22:10:30 2018 +0700
+
+    Test
