@@ -4,6 +4,7 @@ namespace JEMBATAN\Http\Controllers;
 
 use JEMBATAN\Bencana;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str; 
 
 class BencanaController extends Controller
 {
@@ -44,7 +45,7 @@ class BencanaController extends Controller
             'deskripsi'=>'required',
             'cover'=>'image|nullable|max:1999'
         ]);
-        //
+        
         if($request->hasFile('cover')){
             $fileNameWithExt = $request->file('cover')->getClientOriginalName();
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME); 
@@ -55,13 +56,14 @@ class BencanaController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
 
-
+        $slug = Str::slug($request->post('nama_bencana'),'-').'-'.time();
         $bencana = new bencana([
             'batas_waktu'=>$request->post('batas_waktu'),
             'nama_bencana'=>$request->post('nama_bencana'),
             'deskripsi'=>$request->post('deskripsi'),
             'status'=>'Diunggah',
-            'cover'=>$fileNameToStore
+            'cover'=>$fileNameToStore,
+            'slug'=>$slug
         ]);
         $bencana->save();
     }
