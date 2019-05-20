@@ -174,6 +174,7 @@ return [
         // JEMBATAN\Providers\BroadcastServiceProvider::class,
         JEMBATAN\Providers\EventServiceProvider::class,
         JEMBATAN\Providers\RouteServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 
     ],
 
@@ -223,6 +224,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'JavaScript' => Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
 
     ],
 
