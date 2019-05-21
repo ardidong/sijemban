@@ -1,10 +1,11 @@
 @extends('layoutsumum')
 
 @section('headscript')
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="//code.highcharts.com/maps/modules/map.js"></script>
 @endsection
 
 @section('content')
@@ -18,9 +19,17 @@
             </div>
           </div>
         </div>
+
+        <div class="container" id="container" style=" height:400px; margin-top: 100px;">
+            <div id='peta'>
+
+            </div>
+        </div>
 @endsection
 
 @section('script')
+<script src="{{ asset('js/locationStat.js') }}" ></script>
+
 <script type="text/javascript">
   Highcharts.chart('container', {
       chart: {

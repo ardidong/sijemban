@@ -49,5 +49,25 @@ var map,infoWindow,pos;
 						$('#alamat').text(results[0].formatted_address);
 					}
 				}
+				for(var i=0;i<10;i++){
+					if(results[1].address_components[i].types[0]=="administrative_area_level_3"){
+						$("#kecamatan").val(results[1].address_components[i].long_name);
+						break;
+					}
+				}
+				
+				for(var i=0;i<10;i++){
+					if(results[1].address_components[i].types[0]=="administrative_area_level_2"){
+						$("#kabupaten").val(results[1].address_components[i].long_name);
+						break;
+					}
+				}
+
+				for(var i=0;i<10;i++){
+					if(results[1].address_components[i].types[0]=="administrative_area_level_1"){
+						$("#provinsi").val(results[1].address_components[i].long_name);
+						break;
+					}
+				}
 			});
       }

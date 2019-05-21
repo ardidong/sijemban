@@ -19,6 +19,9 @@ class CreateDonasisTable extends Migration
             $table->string('alamat');
             $table->string('latitude');
             $table->string('longitude');
+            $table->string('kecamatan');
+            $table->string('kabupaten');
+            $table->string('provinsi');
             $table->string('no_resi')->nullable();
             $table->datetime('tanggal_jemput')->nullable();
             $table->integer('id_donatur')->unsigned();
