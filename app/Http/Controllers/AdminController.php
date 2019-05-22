@@ -27,3 +27,4 @@ class AdminController extends Controller
       return view('admin',compact('tanggal'))->with(['total'=>$total_donasi1])->with(['total1'=>$total_donasi2]);
   }
 }
+
