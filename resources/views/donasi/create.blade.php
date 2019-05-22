@@ -31,6 +31,9 @@
                                 <input class='invisible' type="number" name="id_bencana" id="id_bencana" value='{{$bencana->id}}'>
                                 <input class='invisible' type="text" name="latitude" id="latitude">
                                 <input class='invisible' type="text" name="longitude" id="longitude">
+                                <input class='invisible' type="text" name="kecamatan" id="kecamatan">
+                                <input class='invisible' type="text" name="kabupaten" id="kabupaten">
+                                <input class='invisible' type="text" name="provinsi" id="provinsi">
 
                                 <hr>
 

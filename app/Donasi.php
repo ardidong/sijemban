@@ -8,7 +8,7 @@ class Donasi extends Model
 {
     protected $primaryKey = 'kode_donasi';
 
-    protected $fillable=['status','alamat','latitude','longitude',
+    protected $fillable=['status','alamat','kecamatan','kabupaten','provinsi','latitude','longitude',
     'no_resi', 'tanggal_jemput','id_donatur','id_bencana','id_petugas'];
 
     public function barang()

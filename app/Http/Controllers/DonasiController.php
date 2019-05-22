@@ -54,6 +54,9 @@ class DonasiController extends Controller
             'alamat'=>'required',
             'latitude'=>'required',
             'longitude'=>'required',
+            'kecamatan'=>'required',
+            'kabupaten'=>'required',
+            'provinsi'=>'required',
             'jenis'=>'required',
             'namabarang'=>'required',
             'jmlbarang'=>'required'
@@ -63,6 +66,9 @@ class DonasiController extends Controller
             'alamat'=>$request->post('alamat'),
             'latitude'=>$request->post('latitude'),
             'longitude'=>$request->post('longitude'),
+            'kecamatan'=>$request->post('kecamatan'),
+            'kabupaten'=>$request->post('kabupaten'),
+            'provinsi'=>$request->post('provinsi'),
             'id_donatur'=>Auth::user()->id,
             'id_bencana'=>$request->post('id_bencana'),
         ]);
