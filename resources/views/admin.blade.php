@@ -77,11 +77,11 @@
       },
       series: [{
           name: 'Diajukan',
-          data: [0, 0, 0, 0, {{$total}}, 0, 0, 0, 0, 0, 0, 0]
+          data:  {!!json_encode($hitung_diajukan)!!}
 
       }, {
           name: 'Dijemput',
-          data: [0, 0, 0, 0, 0, {{$total1}}, 0, 0, 0, 0, 0, 0]
+          data: {!!json_encode($hitung_dijemput)!!}
 
       }, //{
       //     name: 'London',

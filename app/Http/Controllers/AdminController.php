@@ -14,17 +14,34 @@ class AdminController extends Controller
 {
   public function index(Request $request)
   {
-      $bencanas = Bencana::all();
-      $total_donasi1 = Donasi::where('status', '=', 'diajukan')->count();
-      $total_donasi2 = Donasi::where('status', '=', 'dijemput')->count();
-      // $days = 200;
+
+      // sementara untuk menghitung rata" tanggal
       $tanggal = Donasi::whereNotNull('tanggal_jemput')->get();
 
-      // $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2015-5-5 3:30:34');
-      // $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2015-5-6 9:30:34');
-      // $diff_in_days = $to->diffInDays($from);
+      //hitung
+      $dijemput = Donasi::orderBy('tanggal_jemput','desc')->get();
+      $diajukan = Donasi::orderBy('created_at','desc')->get();
+      $hitung_dijemput = array();
+      for ($i=0; $i < 12 ; $i++) {
+        $hitung_dijemput[$i] = Donasi::where('status','=','dijemput')->whereMonth('tanggal_jemput', '=', date($i+1))->count();
+      }
+      $hitung_diajukan = array();
+      for ($i=0; $i < 12 ; $i++) {
+        $hitung_diajukan[$i] = Donasi::where('status', '=', 'diajukan')->whereMonth('created_at', '=', date($i+1))->count();
+      }
 
-      return view('admin',compact('tanggal'))->with(['total'=>$total_donasi1])->with(['total1'=>$total_donasi2]);
+      return view('admin',compact('tanggal'))->with(['hitung_dijemput'=>$hitung_dijemput, 'hitung_diajukan'=>$hitung_diajukan]);
+  }
+
+  public function hitung(){
+    $dijemput = Donasi::orderBy('tanggal_jemput','desc')->get();
+    $diajukan = Donasi::orderBy('created_at','desc')->get();
+
+    $hitung = array();
+    for ($i=0; $i < 12 ; $i++) {
+      $hitung[$i] = Donasi::whereMonth('created_at', '=', date($i))->count();
+    }
+
   }
 }
 
