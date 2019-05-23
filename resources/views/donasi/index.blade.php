@@ -1,6 +1,11 @@
 
 @extends('layouts.app')
 
+@section('headscript')
+
+
+@endsection
+
 @section('content')
 
   @if(session()->get('success'))
@@ -71,8 +76,7 @@
   </div>
   
 
-  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-  <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+
   <script>
     $(document).ready(function() {
         

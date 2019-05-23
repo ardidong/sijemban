@@ -1,6 +1,11 @@
 
 @extends('layouts.app')
 
+@section('headscript')
+
+<script src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'></script>
+@endsection
+
 @section('content')
     <div class="container">
 
