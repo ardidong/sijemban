@@ -4,7 +4,7 @@ namespace JEMBATAN\Http\Controllers;
 
 use JEMBATAN\Bencana;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str; 
+use Illuminate\Support\Str;
 
 class BencanaController extends Controller
 {
@@ -35,7 +35,7 @@ class BencanaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response    
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -45,10 +45,10 @@ class BencanaController extends Controller
             'deskripsi'=>'required',
             'cover'=>'image|nullable|max:1999'
         ]);
-        
+
         if($request->hasFile('cover')){
             $fileNameWithExt = $request->file('cover')->getClientOriginalName();
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME); 
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('cover')->getClientOriginalExtension();
             $fileNameToStore = $fileName.'_'.time().'.'.$extension;
             $path = $request->file('cover')->storeAs('public/cover',$fileNameToStore);
@@ -67,7 +67,7 @@ class BencanaController extends Controller
         ]);
         $bencana->save();
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -77,7 +77,12 @@ class BencanaController extends Controller
      */
     public function show($id)
     {
-        //
+      $bencana = Bencana::where('id',$id)->first();
+       if (empty($bencana)) {
+         die('hard');
+         abort(404);
+       }
+       return view('bencana.show',compact('bencana'));
     }
 
     /**

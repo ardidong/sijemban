@@ -1,13 +1,13 @@
 
-@extends('layouts.app')
+@extends('layoutsumum')
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="margin-top: 100px; margin-bottom:100px">
         <div class='row mt-5 '>
             <div class='col-md-12 '>
                 <div class='card shadow mb-5 bg-white rounded'>
-                    <div class='card-body' style="background: #EB413D">
+                    <div class='card-body' style="background: #119bff">
                         <div class='row'>
                             <div class='col-md-12'>
                                 <form method="get" action="" name="resi" id="resi">
@@ -18,7 +18,7 @@
                                         <input class='form-control col-md-7 offset-2 ' name="noResi" id="noResi" placeholder="Masukkan Nomor Resi" required >
                                         <button type="button" id="cari" name='cari' class="btn ml-3 float-right" style="background : #ffffff"  >Cari</button>
                                     </div>
-                                </div>  
+                                </div>
                               </form>
                            </div>
                         </div>
@@ -41,7 +41,7 @@
                                 </thead>
                                 <tbody>
                                     <tr id="fill">
-                                       
+
                                     </tr>
                                 </tbody>
                                 </table>
@@ -56,15 +56,15 @@
         <script>
             $(document).ready(function() {
                 var cariURL = "{{ route('lacak.create') }}";
-                $("#cari").click(function() {                
+                $("#cari").click(function() {
 
                     $.ajax({    //create an ajax request to display.php
                         method: "GET",
-                        url: cariURL,    
+                        url: cariURL,
                         data:$('#resi').serialize(),
-                        type:'json',                      
-                        success: function(response){  
-                            $('#fill').html("");                  
+                        type:'json',
+                        success: function(response){
+                            $('#fill').html("");
                             var hasil = JSON.parse(response);
                             if(hasil.length!=0){
                                 $(hasil).each(
@@ -92,4 +92,3 @@
             });
         </script>
     @endsection
-       

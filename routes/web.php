@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-
+//Route::get('/coba', function(){return view('bencana.show');});
 
 Route::resource('donasi','DonasiController');
 Route::resource('bencana','BencanaController');

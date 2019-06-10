@@ -50,16 +50,16 @@
             <span class="sr-only">Next</span>
           </a>
         </div> -->
-        <div class="jumbotron jumbotron-fluid" style="background-image: url(homepage.jpg); background-size: cover; height:700px;">
+        <div class="jumbotron" style="background-image: url(homepage.jpg); background-size: cover; height:700px;">
           <div class="container">
             <h4 class="display-4" style="color: white; text-align:center; margin-top: 250px;">Donasikan Barang Anda Untuk Orang Yang Membutuhkan</h4>
           </div>
         </div>
-        <div class="" style="height:100px; background-color: black; margin-top:-150px; opacity: 0.7;">
+        <div class="" style="height:120px; background-color: black; margin-top:-150px; opacity: 0.7;">
 
         </div>
         <!-- <img src="homepage.jpg" class="img-fluid" alt="Responsive image" style="margin-top:-90px;"> -->
-        <div class="container" style="height: 100px; margin-top:-100px; color:#ffffff; font-size:20px;">
+        <div class="container" style="height: 100px; margin-top:-110px; color:#ffffff; font-size:20px;">
           <div class="row">
             <div class="col-sm">
               Jumlah Barang Diberikan
@@ -75,13 +75,17 @@
             </div>
           </div>
         </div>
-        <div class="album py-5 bg-light">
-            <div class="container">
+        <div class="container" style="margin-top:50px;">
+          <h4 style="color:#565656; text-align: center;">CARA MEMBERIKAN DONASI</h4>
+          <img src="cara.png" class="img-fluid" alt="Responsive image" style="margin-top:20px;">
+        </div>
+        <div class="album py-5">
+            <div class="container shadow p-3 mb-5 bg-white rounded" style="background-color:white;">
               <div class="row">
 
                 @foreach($bencanas as $bencana)
                 @if($bencana->status=="Ditampilkan")
-                <div class="col">
+                <div class="col" style="margin-top: 20px;">
                   <div class="card" style="width: 18rem; margin-bottom:50px; text-align:left;">
                     <a href="#" class="deskirpsi-card" style="color: #196D7C;">
                       <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="tidak ada gambar" style="height: 200px">
