@@ -44,16 +44,6 @@
           <li class="nav-item">
             <a class="nav-link" style="color: white" href="/lacak">Lacak</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"  style="color: white" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tentang</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Sejarah</a>
-              <a class="dropdown-item" href="#">Visi Misi</a>
-              <a class="dropdown-item" href="#">Manajemen</a>
-              <a class="dropdown-item" href="#">Program Kami</a>
-              <a class="dropdown-item" href="#">Kontak</a>
-            </div>
-          </li>
         </ul>
 
         <!-- Right Side Of Navbar -->
