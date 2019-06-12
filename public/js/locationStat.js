@@ -2,7 +2,7 @@ $(function () {
     var ss=10;
     var chart = new Highcharts.Map('peta', {
         title: {
-        text: 'Peta Sebaran Lokasi Donator di Kabupaten Sleman'
+        text: 'Peta Sebaran Lokasi Donasi di Kabupaten Sleman'
         },
 
         mapNavigation: {
@@ -14,6 +14,7 @@ $(function () {
                 text: 'Banyak Donasi per Kecamatan	'
             }
         },
+
         colorAxis: {
             min: 1,
             max: 1000,
@@ -22,6 +23,7 @@ $(function () {
 
         series: [
                 {
+                    "name": 'Jumlah Donasi',
                     "type": "map",
                     "data": [
                         {
