@@ -28,7 +28,15 @@
 @endsection
 
 @section('script')
+
+<script>
+    var dataLok ={!!json_encode($lokasi)!!} ;
+    console.log(dataLok);
+</script>
+<!-- Data Peta Sleman-->
+<script src="{{ asset('js/sleman.js ') }}" ></script>
 <script src="{{ asset('js/locationStat.js') }}" ></script>
+
 
 <script type="text/javascript">
   Highcharts.chart('container', {

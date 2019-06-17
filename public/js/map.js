@@ -49,16 +49,19 @@ var map,infoWindow,pos;
 						$('#alamat').text(results[0].formatted_address);
 					}
 				}
+				//Mencari Kecamatan donasi
 				for(var i=0;i<10;i++){
 					if(results[1].address_components[i].types[0]=="administrative_area_level_3"){
-						$("#kecamatan").val(results[1].address_components[i].long_name);
+						var str = results[1].address_components[i].long_name;
+						$("#kecamatan").val(str.substr(10));
 						break;
 					}
 				}
-				
+				//Mencari Provinsi Donasi
 				for(var i=0;i<10;i++){
 					if(results[1].address_components[i].types[0]=="administrative_area_level_2"){
-						$("#kabupaten").val(results[1].address_components[i].long_name);
+						var str = results[1].address_components[i].long_name;
+						$("#kabupaten").val(str.substr(10));
 						break;
 					}
 				}
