@@ -1,19 +1,19 @@
 
-@extends('layouts.app')
+@extends('layoutsumum')
 
 @section('content')
-
-  <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet"> 
+<!--
+  <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
   <div class='container-fluid'>
     <div class='row'>
-      
+
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column mt-3">
               <li class="nav-item">
                 <a class="nav-link " href="admin">
                   <span data-feather="home"></span>
-                    Admin 
+                    Admin
                 </a>
               </li>
               <li class="nav-item">
@@ -21,26 +21,26 @@
                   <span data-feather="file"></span>
                   Daftar Bencana <span class="sr-only">(current)</span>
                 </a>
-              </li>  
+              </li>
               <li class="nav-item">
                 <a class="nav-link " href="petugas">
                   <span data-feather="file"></span>
-                  Daftar Petugas 
+                  Daftar Petugas
                 </a>
-              </li>  
+              </li>
           </div>
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10   pt-3 px-4 bg-white">
         @if(session()->get('success'))
           <div class="alert alert-success">
-            {{ session()->get('success') }}  
+            {{ session()->get('success') }}
           </div><br />
         @endif
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
           </div>
-          
+
           <h2>Daftar Bencana</h2>
           <button  id='detail' nama='detail' class="btn btn-outline-primary mb-2">Detail </button>
           <button  id='ubah' nama='ubah' class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#myModal">Ubah Status </button>
@@ -68,16 +68,16 @@
               </tbody>
             </table>
           </div>
-          
+
           </div>
         </main>
 
 
     </div>
-  </div>
+  </div> -->
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -87,21 +87,21 @@
           </button>
         </div>
         <div class="modal-body">
-          
+
         </div>
         <div class="modal-footer">
-          
+
       </div>
     </div>
   </div>
 
-  
+
   <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
- 
+
   <script>
     $(document).ready(function() {
-        
+
       var table = $('#tabel').DataTable();
       var row;
         $('#tabel tbody').on( 'click', 'tr', function () {
@@ -115,10 +115,10 @@
             var pos = table.row(this).index();
             var row = table.row(pos).data();
         } );
-          
+
         $('#detail').click( function () {
           var data = table.rows('.selected').data();
-       
+
           var lokasi = '{{ route("donasi.show", "id") }}';
           lokasi = lokasi.replace('id',data[0][0]);
          //   table.row('.selected').remove().draw( false );
@@ -137,7 +137,7 @@
               lokasi = lokasi.replace('id',data[0][0]);
               window.location.href = lokasi;
             });
-           
+
           }else{
             $(".modal-body").append("<b>Apakah anda yakin ingin mengubah status bencana ?</b>");
             $(".modal-footer").append('<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button> <button type="button" class="btn btn-primary" id="save" >Simpan</button>');
@@ -155,5 +155,42 @@
         //  select: true
         //  } );
     } );
-  </script>
+  </script> -->
+
+  <div class="container shadow p-3 mb-5 bg-white rounded" style="margin-top:100px; margin-bottom: 200px !important; border: 0.5px solid #dddddd;">
+    <div class="row navbar navbar-expand-lg navbar-light" style="background-color:none !important; margin-top: -10px !important;margin-bottom: 20px;">
+        <div class="judul">
+          <h2>SEMUA KONTEN</h2>
+        </div>
+    </div>
+
+    <div class="row" align="center">
+      @foreach ($bencanas as $i => $content)
+      <div class="col">
+        <div class="card" style="width: 18rem; margin-bottom:50px; text-align:left;">
+          <a href="/bencana/{{$content->id}}" class="deskirpsi-card" style="color: #196D7C;">
+            <img class="card-img-top" src="/storage/cover/{{$content->cover}}" alt="tidak ada gambar" style="height: 200px">
+            <div class="card-body">
+              <div style="height:45px; overflow: hidden; margin-bottom:20px;">
+                <h5 class="card-title">{{$content->nama_bencana}}</h5>
+              </div>
+              <div  style="height:90px; width:250px; overflow: hidden;">
+                  <p class="card-text">{{$content->deskripsi}}</p>
+              </div>
+            </div>
+          </a>
+          <div class="card-body" style="height: 50px !important;">
+          <a href="#" class="card-link">
+            {{$content->batas_waktu->diffForHumans()}}
+          </a>
+        </div>
+        </div>
+      </div>
+      @endforeach
+
+    </div>
+    <div align="pagination justify-content-center" align="center" style="padding-left:45%;">
+      {!! $bencanas->render() !!}
+    </div>
+  </div>
 @endsection

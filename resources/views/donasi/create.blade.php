@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layoutsumum')
 
 @section('headscript')
 
@@ -7,12 +7,12 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top:100px;">
 
         <div class='row mt-5 '>
             <div class='col-md-7 offset-md-3'>
                 <div class='card shadow mb-5 bg-white rounded'>
-                    <div class='card-header bg-danger text-white'><h2>Formulir Donasi</h2></div>
+                    <div class='card-header text-white' style="background-color:#119bff;"><h2>Formulir Donasi</h2></div>
                     <div class='card-body'>
                         <div class='row'>
                             <div class='col-md-12'>

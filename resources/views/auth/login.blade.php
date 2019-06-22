@@ -1,36 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-	<link rel="shortcut icon" type="image/png" href="/storage/gambar/favicon-16x16.png"/>
-    <title>{{ config('app.name', 'JEMBATAN') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-   
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
- 	<link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
-
-</head>
-<body style='background: #EB413D;'>	
+@extends('layoutsumum')
+@section('content')
 	<div class="container">
 		<div class="row mt-5">
 			<div class='col-md-6 offset-md-3'>
-				<div class="card">
+				<div class="card shadow-lg p-3 mb-5 bg-white rounded" style="margin-top:50px; margin-bottom:100px;">
 					<div class='card-body'>
-						<div class='col-md-6 offset-md-3'> 
-							<img class='mx-auto d-block' src="/storage/gambar/logo.png" alt="logo" width="72" height="72">
+						<div class='col-md-6 offset-md-3'>
 							<form class="form-signin" method="POST" action="{{ route('login') }}">
 								@csrf
 
@@ -40,18 +15,18 @@
 											@if ($errors->has('email'))
 												<span class="invalid-feedback" role="alert">
 														<strong>{{ $errors->first('email') }}</strong>
-												</span>	
+												</span>
 											@endif
 									</div>
 
 									<div class="form-group row">
-										<input type="password" id="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"  name="password" placeholder="Password" required>	
+										<input type="password" id="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"  name="password" placeholder="Password" required>
 										@if ($errors->has('password'))
 											<span class="invalid-feedback" role="alert">
 													<strong>{{ $errors->first('password') }}</strong>
 											</span>
 										@endif
-									</div>			
+									</div>
 
 									<div class="form-group row">
 										<div class="form-check">
@@ -76,14 +51,14 @@
 								<p class="text-center text-muted">&copy; 2017-2018</p>
 								</form>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
@@ -99,6 +74,4 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
-</body>
-</html>
+@endsection

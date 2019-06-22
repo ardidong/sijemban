@@ -3,9 +3,9 @@
 
 @section('content')
     <div class="container">
-        <div class='row mt-5'  style="margin-bottom:100px">
-            <div class='col-md-12 '>
-                <div class='card shadow mb-5 bg-white rounded' style="margin-top: 50px;">
+        <div class='row mt-5'>
+            <div class='col-md-12 ' style="margin-top: 50px; margin-bottom:100px;">
+                <div class='card shadow mb-5 bg-white rounded'>
                     <div class='card-body' style="background: #119bff">
                         <div class='row'>
                             <div class='col-md-12'>

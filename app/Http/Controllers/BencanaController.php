@@ -15,8 +15,7 @@ class BencanaController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles('admin');
-        $bencanas = Bencana::all();
+        $bencanas = Bencana::where('status','ditampilkan')->orderBy('id', 'DESC')->paginate(9);
         return view('bencana.index',compact('bencanas'));
     }
 

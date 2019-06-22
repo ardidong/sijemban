@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-
     <link rel="shortcut icon" type="image/png" href="/storage/gambar/favicon-16x16.png"/>
     <title>Sistem Jemput Bantuan</title>
 
@@ -24,7 +23,7 @@
     @yield('headscript')
   </head>
 
-  <body>
+  <body style="background-color: #efefef">
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #119bff; font-family: verdana;">
       <a class="navbar-brand" href="{{route('home')}}" style="color: white; font-weight: bold;">JEMBATAN</a>
@@ -36,10 +35,10 @@
          <!-- Left Side Of Navbar -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/donasi" style="color: white">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/" style="color: white">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/donasi" style="color: white">Donasi</a>
+            <a class="nav-link" href="/bencana" style="color: white">Donasi</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="color: white" href="/lacak">Lacak</a>
@@ -95,7 +94,7 @@
       </div>
     </nav>
 
-    <main role="main" style="background-color:#efefef;">
+    <main role="main" style="background-color: #efefef">
       @yield('content')
     </main>
 
