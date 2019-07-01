@@ -9,10 +9,12 @@
 @endsection
 
 @section('content')
-        <div class="container" id="container" style=" height:400px; margin-top: 100px;">
+      <div class="container shadow-lg p-3 mb-5 bg-white rounded" style="background-color:white; margin-top: 100px;">
+        <h1>STATIStIK DONASI</h1>
+        <div id="container" style=" height:400px;">
         </div>
-        <div class="container">
-          <div class="row justify-content-around" style="height:50px;">
+        <div>
+          <div class="row justify-content-around" style="height:50px; margin-top: 50px;">
             <div class="col-4 text-center shadow p-3 mb-5 bg-white rounded" id="demo" style="font-weight:bold; border-radius: 5px;">
             </div>
             <div class="col-4">
@@ -20,11 +22,12 @@
           </div>
         </div>
 
-        <div class="container" id="container" style=" height:400px; margin-top: 100px;">
+        <div id="container" style=" height:400px; margin-top: 100px;">
             <div id='peta'>
 
             </div>
         </div>
+      </div>
 @endsection
 
 @section('script')
