@@ -60,7 +60,7 @@ class BencanaController extends Controller
             'batas_waktu'=>$request->post('batas_waktu'),
             'nama_bencana'=>$request->post('nama_bencana'),
             'deskripsi'=>$request->post('deskripsi'),
-            'status'=>'Diunggah',
+            'status'=>'Ditampilkan',
             'cover'=>$fileNameToStore,
             'slug'=>$slug
         ]);

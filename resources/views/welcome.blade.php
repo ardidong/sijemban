@@ -90,7 +90,7 @@
                     <a href="#" class="deskirpsi-card" style="color: #196D7C;">
                       <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="tidak ada gambar" style="height: 200px">
                       <div class="card-body">
-                        <div style="height:45px; overflow: hidden; margin-bottom:20px;">
+                        <div style="height:45px; overflow: hidden;">
                           <h5 class="card-title">{{$bencana->nama_bencana}}</h5>
                         </div>
                         <div  style="height:90px; width:250px; overflow: hidden;">
