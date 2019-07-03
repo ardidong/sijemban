@@ -18,6 +18,7 @@ class CreateBarangsTable extends Migration
             $table->string('jenis');
             $table->string('nama');
             $table->integer('jumlah');
+            $table->integer('berat');
             $table->integer('kode_donasi')->unsigned();
             $table->foreign('kode_donasi')->references('kode_donasi')->on('donasis');
             $table->timestamps();

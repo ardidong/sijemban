@@ -47,8 +47,10 @@
 
                                         <label for="Jenis">Jenis Barang</label>
                                         <select class='form-control' name="jenis[]" >
-                                            <option value="distribusi">Barang Siap Distribusi</option>
-                                            <option value="aksi">Barang Aksi Kemanusiaan</option>
+                                            <option value="konsumsi">Barang Konsumsi</option>
+                                            <option value="kebutuhan">Barang Kebutuhan Pokok</option>
+                                            <option value="peralatan">Peralatan Darurat(genset, tenda)</option>
+                                            <option value="obat">Barang Medis Obat Obatan</option>
                                             <option value="bernilai">Barang Bernilai</option>
                                         </select>
 
@@ -57,6 +59,9 @@
 
                                         <label for="jumlahbrg">Jumlah Barang</label>
                                         <input class='form-control' type="number" name="jmlbarang[]" >
+
+                                        <label for="brtbrg">Berat Barang(kg)</label>
+                                        <input class='form-control' type="number" name="brtbarang[]" >
 
                                 </div>
                                 <div class="mb-2">

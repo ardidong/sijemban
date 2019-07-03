@@ -87,7 +87,7 @@
                 @if($bencana->status=="Ditampilkan")
                 <div class="col" style="margin-top: 20px;">
                   <div class="card" style="width: 18rem; margin-bottom:50px; text-align:left;">
-                    <a href="#" class="deskirpsi-card" style="color: #196D7C;">
+                    <a href="bencana/{{$bencana->id}}" class="deskirpsi-card" style="color: #196D7C;">
                       <img class="card-img-top" src="/storage/cover/{{$bencana->cover}}" alt="tidak ada gambar" style="height: 200px">
                       <div class="card-body">
                         <div style="height:45px; overflow: hidden;">

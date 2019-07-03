@@ -76,6 +76,7 @@ class DonasiController extends Controller
         $xjenis = $request->jenis;
         $xnama = $request->namabarang;
         $xjumlah = $request->jmlbarang;
+        $xberat = $request->brtbarang;
         $count = count($xjenis);
         for($i=0;$i<$count;$i++)
         {
@@ -83,8 +84,9 @@ class DonasiController extends Controller
             $barang->jenis = $xjenis[$i];
             $barang->nama = $xnama[$i];
             $barang->jumlah = $xjumlah[$i];
-            $donasi->barang()->save($barang);        
-            
+            $barang->berat = $xberat[$i];
+            $donasi->barang()->save($barang);
+
         }
 
         return redirect('/donasi')->with('succes','berhasil');
@@ -137,7 +139,7 @@ class DonasiController extends Controller
     {
         $donasi = Donasi::find($id);
         $donasi->delete();
-   
+
         return redirect('/shares')->with('success', 'Stock has been deleted Successfully');
     }
 

@@ -10,7 +10,7 @@
 
 @section('content')
       <div class="container shadow-lg p-3 mb-5 bg-white rounded" style="background-color:white; margin-top: 100px;">
-        <h1>STATIStIK DONASI</h1>
+        <h1>STATISTIK DONASI</h1>
         <div id="container" style=" height:400px;">
         </div>
         <div>
