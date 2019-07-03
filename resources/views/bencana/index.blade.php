@@ -160,7 +160,7 @@
   <div class="container shadow p-3 mb-5 bg-white rounded" style="margin-top:100px; margin-bottom: 200px !important; border: 0.5px solid #dddddd;">
     <div class="row navbar navbar-expand-lg navbar-light" style="background-color:none !important; margin-top: -10px !important;margin-bottom: 20px;">
         <div class="judul">
-          <h2>SEMUA KONTEN</h2>
+          <h2>SEMUA BENCANA</h2>
         </div>
     </div>
 

@@ -81,6 +81,7 @@
         </div>
         <div class="album py-5">
             <div class="container shadow p-3 mb-5 bg-white rounded" style="background-color:white;">
+              <h2>BENCANA YANG SEDANG TERJADI</h2>
               <div class="row">
 
                 @foreach($bencanas as $bencana)

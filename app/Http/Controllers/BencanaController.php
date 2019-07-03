@@ -3,6 +3,7 @@
 namespace JEMBATAN\Http\Controllers;
 
 use JEMBATAN\Bencana;
+use JEMBATAN\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -81,7 +82,12 @@ class BencanaController extends Controller
          die('hard');
          abort(404);
        }
-       return view('bencana.show',compact('bencana'));
+       $jumlahobat = Barang::where('jenis','obat')->sum('jumlah');
+       $jumlahkebutuhan = Barang::where('jenis','kebutuhan')->sum('jumlah');
+       $jumlahperalatan = Barang::where('jenis','peralatan')->sum('jumlah');
+       $jumlahkonsumsi = Barang::where('jenis','konsumsi')->sum('jumlah');
+
+       return view('bencana.show',compact('bencana','jumlahobat','jumlahkebutuhan','jumlahperalatan','jumlahkonsumsi'));
     }
 
     /**

@@ -28,6 +28,10 @@
             </div>
         </div>
       </div>
+      <div class="container shadow-lg p-3 mb-5 bg-white rounded" style="background-color:white; margin-top: 100px;">
+        <div id="container1" style=" height:400px;">
+        </div>
+      </div>
 @endsection
 
 @section('script')
@@ -116,6 +120,60 @@
   }
   var rata = hitung/tanggal.length;
   document.getElementById("demo").innerHTML = "Rata - Rata Penjemputan " +"<br>"+ Math.trunc(rata) +" hari";
+
+//Grafik jumlah donator
+  Highcharts.chart('container1', {
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'Grafik Jumlah Donator'
+      },
+      xAxis: {
+          categories: [
+              'Jan',
+              'Feb',
+              'Mar',
+              'Apr',
+              'May',
+              'Jun',
+              'Jul',
+              'Aug',
+              'Sep',
+              'Oct',
+              'Nov',
+              'Dec'
+          ],
+          crosshair: true
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Jumlah Donator'
+          }
+      },
+      tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y} user</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      },
+      plotOptions: {
+          column: {
+              pointPadding: 0.2,
+              borderWidth: 0
+          }
+      },
+      series: [{
+          name: 'Donator',
+          data:  {!!json_encode($hitung_donatur)!!}
+
+      }]
+  });
+
+
 </script>
 
 
