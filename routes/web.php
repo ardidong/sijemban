@@ -26,7 +26,7 @@ Route::get('/donasi/create/{id}', 'DonasiController@create');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/wew', 'AdminController@index');
+Route::get('/admin', 'AdminController@index');
 Route::view('/dashboardpetugas', function () {
     return view('petugas');
 })->name('petugas.dashboard');

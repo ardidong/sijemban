@@ -21,7 +21,28 @@ class UserTableSeeder extends Seeder
         $donator->email = 'ardimail@gmail.com';
         $donator->password = Hash::make('123456');
         $donator->alamat = 'Sleman';
-        $donator->no_telepon = '086261j2342';
+        $donator->no_telepon = '0867287654881';
+        $donator->remember_token = 'd2j3';
+        $donator->save();
+        $donator->roles()->attach($role_donator);
+
+        $donator = new User();
+        $donator->name = 'Dwi';
+        $donator->email = 'dwimail@gmail.com';
+        $donator->password = Hash::make('123456');
+        $donator->alamat = 'Bantul';
+        $donator->no_telepon = '085789223222';
+        $donator->remember_token = 'd2j3';
+        $donator->save();
+        $donator->roles()->attach($role_donator);
+
+        
+        $donator = new User();
+        $donator->name = 'Rifai';
+        $donator->email = 'rifaimail@gmail.com';
+        $donator->password = Hash::make('123456');
+        $donator->alamat = 'Sleman';
+        $donator->no_telepon = '085789223222';
         $donator->remember_token = 'd2j3';
         $donator->save();
         $donator->roles()->attach($role_donator);
