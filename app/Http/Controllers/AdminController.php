@@ -38,7 +38,13 @@ class AdminController extends Controller
                                                                       $join->on('users.id','=','role_user.user_id')->where('role_user.role_id','=',1);
                                                                     })->whereMonth('created_at','=',$i+1)->count();
        }
-      return view('admin',compact('tanggal'))->with(['hitung_dijemput'=>$hitung_dijemput, 'hitung_diajukan'=>$hitung_diajukan, 'hitung_donatur'=>$hitung_donatur])
+       $hitung_petugas = array();
+       for ($i=0; $i < 12 ; $i++) {
+         $hitung_petugas[$i] = DB::table('users')->join('role_user', function($join) {
+                                                                      $join->on('users.id','=','role_user.user_id')->where('role_user.role_id','=',2);
+                                                                    })->whereMonth('created_at','=',$i+1)->count();
+       }
+      return view('admin',compact('tanggal'))->with(['hitung_dijemput'=>$hitung_dijemput, 'hitung_diajukan'=>$hitung_diajukan, 'hitung_donatur'=>$hitung_donatur,'hitung_petugas'=>$hitung_petugas])
                                              ->with('lokasi',$this->hitungLokasi());
 
     }
@@ -55,16 +61,16 @@ class AdminController extends Controller
   }
 
   public function hitungLokasi(){
-      $hasil = array(); 
+      $hasil = array();
       $tes = DB::table('donasis')
                     ->select(DB::raw(' kecamatan , count(kecamatan) as jumlah'))
                     ->groupBy('kecamatan')
                     ->get();
-      
+
       foreach($tes as $lokasi){
-        $hasil[] = Arr::add(['name' => $lokasi->kecamatan],'value', $lokasi->jumlah );  
-      } 
- 
+        $hasil[] = Arr::add(['name' => $lokasi->kecamatan],'value', $lokasi->jumlah );
+      }
+
       // $hasil[0] = Arr::add(['name' => 'Berbah'], 'value', Donasi::where('kecamatan','like','%Berbah%')
       // ->count());
       // $hasil[1] = Arr::add(['name' => 'Cangkringan'], 'value', Donasi::where('kecamatan','like','%Cangkringan%')

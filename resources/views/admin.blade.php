@@ -9,17 +9,17 @@
 @endsection
 
 @section('content')
-      <div class="container shadow-lg p-3 mb-5 bg-white rounded" style="background-color:white; margin-top: 100px;">
+      <div>
+        <div class="row justify-content-around" style="height:50px; margin-top: 100px;">
+          <div class="col-4 text-center shadow p-3 mb-5 bg-white rounded" id="demo" style="font-weight:bold; border-radius: 5px;">
+          </div>
+          <div class="col-4">
+          </div>
+        </div>
+      </div>
+      <div class="container shadow-lg p-3 mb-5 bg-white rounded" style="background-color:white; margin-top: 70px;">
         <h1>STATISTIK DONASI</h1>
         <div id="container" style=" height:400px;">
-        </div>
-        <div>
-          <div class="row justify-content-around" style="height:50px; margin-top: 50px;">
-            <div class="col-4 text-center shadow p-3 mb-5 bg-white rounded" id="demo" style="font-weight:bold; border-radius: 5px;">
-            </div>
-            <div class="col-4">
-            </div>
-          </div>
         </div>
 
         <div id="container" style=" height:400px; margin-top: 100px;">
@@ -122,57 +122,65 @@
   document.getElementById("demo").innerHTML = "Rata - Rata Penjemputan " +"<br>"+ Math.trunc(rata) +" hari";
 
 //Grafik jumlah donator
-  Highcharts.chart('container1', {
-      chart: {
-          type: 'column'
-      },
+Highcharts.chart('container1', {
+
+  title: {
+      text: 'Pertambahan User Setiap Bulan'
+  },
+
+  yAxis: {
       title: {
-          text: 'Grafik Jumlah Donator'
-      },
-      xAxis: {
-          categories: [
-              'Jan',
-              'Feb',
-              'Mar',
-              'Apr',
-              'May',
-              'Jun',
-              'Jul',
-              'Aug',
-              'Sep',
-              'Oct',
-              'Nov',
-              'Dec'
-          ],
-          crosshair: true
-      },
-      yAxis: {
-          min: 0,
-          title: {
-              text: 'Jumlah Donator'
-          }
-      },
-      tooltip: {
-          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-              '<td style="padding:0"><b>{point.y} user</b></td></tr>',
-          footerFormat: '</table>',
-          shared: true,
-          useHTML: true
-      },
-      plotOptions: {
-          column: {
-              pointPadding: 0.2,
-              borderWidth: 0
-          }
-      },
-      series: [{
-          name: 'Donator',
-          data:  {!!json_encode($hitung_donatur)!!}
+          text: 'Jumlah User'
+      }
+  },
+  legend: {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle'
+  },
 
+  xAxis: {
+      categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec'
+      ],
+      crosshair: true
+  },
+
+  series: [{
+      name: 'Donator',
+      data: {!!json_encode($hitung_donatur)!!}
+  }, {
+      name: 'Petugas',
+      data: {!!json_encode($hitung_petugas)!!}
+  }],
+
+  responsive: {
+      rules: [{
+          condition: {
+              maxWidth: 500
+          },
+          chartOptions: {
+              legend: {
+                  layout: 'horizontal',
+                  align: 'center',
+                  verticalAlign: 'bottom'
+              }
+          }
       }]
-  });
+  }
 
+});
 
 </script>
 

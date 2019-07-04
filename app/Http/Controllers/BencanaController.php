@@ -6,6 +6,7 @@ use JEMBATAN\Bencana;
 use JEMBATAN\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use DB;
 
 class BencanaController extends Controller
 {
@@ -82,10 +83,30 @@ class BencanaController extends Controller
          die('hard');
          abort(404);
        }
-       $jumlahobat = Barang::where('jenis','obat')->sum('jumlah');
-       $jumlahkebutuhan = Barang::where('jenis','kebutuhan')->sum('jumlah');
-       $jumlahperalatan = Barang::where('jenis','peralatan')->sum('jumlah');
-       $jumlahkonsumsi = Barang::where('jenis','konsumsi')->sum('jumlah');
+       $jumlahobat = DB::table('barangs')->join('donasis',function($join) use ($id){
+                                                                           $join->on('barangs.kode_donasi','=','donasis.kode_donasi')
+                                                                           ->where('donasis.id_bencana','=',$id)
+                                                                           ->where('donasis.status','=','dijemput')
+                                                                           ;
+                                                                         })->where('jenis','obat')->sum('jumlah');
+       $jumlahkebutuhan = DB::table('barangs')->join('donasis',function($join) use ($id){
+                                                                           $join->on('barangs.kode_donasi','=','donasis.kode_donasi')
+                                                                           ->where('donasis.id_bencana','=',$id)
+                                                                           ->where('donasis.status','=','dijemput')
+                                                                           ;
+                                                                         })->where('jenis','kebutuhan')->sum('jumlah');
+       $jumlahperalatan = DB::table('barangs')->join('donasis',function($join) use ($id){
+                                                                           $join->on('barangs.kode_donasi','=','donasis.kode_donasi')
+                                                                           ->where('donasis.id_bencana','=',$id)
+                                                                           ->where('donasis.status','=','dijemput')
+                                                                           ;
+                                                                         })->where('jenis','peralatan')->sum('jumlah');
+       $jumlahkonsumsi = DB::table('barangs')->join('donasis',function($join) use ($id){
+                                                                           $join->on('barangs.kode_donasi','=','donasis.kode_donasi')
+                                                                           ->where('donasis.id_bencana','=',$id)
+                                                                           ->where('donasis.status','=','dijemput')
+                                                                           ;
+                                                                         })->where('jenis','konsumsi')->sum('berat');
 
        return view('bencana.show',compact('bencana','jumlahobat','jumlahkebutuhan','jumlahperalatan','jumlahkonsumsi'));
     }
