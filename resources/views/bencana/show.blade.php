@@ -113,7 +113,7 @@ Highcharts.chart('container1', {
       }
   },
   tooltip: {
-      valueSuffix: ' unit'
+      valueSuffix: ' kilogram'
   },
   plotOptions: {
       bar: {
