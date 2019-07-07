@@ -22,16 +22,7 @@ class JemputController extends Controller
      */
     public function index(Request $request)
     {
-    //     $lat = -7.721217;
-    //     $lng = 110.347938;
-    //     $latlng = $lat.','.$lng;
-    //     $client = new Client(); //
-    //    $request =$client->post(
-    //        "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=".$latlng."&destinations=-7.718300,110.357189&key=AIzaSyC6vGzt-YmKpCg-WwAL-FJ7VQ1N9QZzM3U");
-    //     $response = $request->getBody()->getContents();
-    //     $jarak = json_decode($response);
-    //     var_dump($jarak ->rows[0]->elements[0]->distance->value);
-            
+   
 
         // $request->user()->authorizeRoles('petugas');
         // $jemputs = DB::table('jemput')
@@ -43,10 +34,17 @@ class JemputController extends Controller
        // return view('jemput.index',compact('jemputs'));
         //return view('jemput.index');
 
+        $this->schedule();
+      
+        
+    }
 
-        //===============
+    public function schedule()
+    {
+           
         $donasis = Donasi::all()->where('status','=','Diajukan');
-        foreach($donasis as $donasi){
+        foreach($donasis as $donasi)
+        {
             //Cari Jarak Dengan API GOOGLE Maps
             $latlng = $donasi->latitude.','.$donasi->longitude;
             $client = new Client(); //
@@ -61,103 +59,120 @@ class JemputController extends Controller
                                 ->where('kode_donasi','=',$donasi->kode_donasi)
                                 ->get();
             $berat = $query[0]->jumlah;
-            $today = Carbon::now()->toDateTimeString();
-           
             $jemputan = new jemput([
                 'jarak'=>$jarak,
                 'berat'=>$berat,
-                'prioritas'=>1,
-                'hari'=>$today,
+                'prioritas'=>$test=$this->infer($jarak,$berat),
+                'hari'=>Carbon::now()->toDateTimeString(),
                 'id_petugas'=>4,
                 'kode_donasi'=>1
 
             ]);
             $jemputan->save();
-
         }
-        
-    }
-
-    public function schedule()
-    {
-        
+            
 
     }
     
-    public function infer($berat,$jarak)
+    public function infer($jarak,$berat)
     {
-        $sDekat;
-        $dekat;
-        $jauh;
-        $sJauh;
+        $nJarak=array();
+
+        /*
+        * indeks 0 = sangat dekat
+        * indeks 1 = dekat
+        * indeks 2 = jauh
+        * indeks 3 = sangat jauh
+        */
+
         //hitung himpunan sangat dekat
         if($jarak<=1000){
-            $sDekat = 1;
+            $nJarak[0] = 1;
         }else if($jarak>=1000 && $jarak<=4000){ //1000 sampai 4000
-            $sDekat = (4000-$jarak)/3000;
+            $nJarak[0] = (4000-$jarak)/3000;
         }else{
-            $sDekat = 0;
+            $nJarak[0] = 0;
         }
 
         //hitung himpunan dekat
         if($jarak<=1000||$jarak>=7000){
-            $dekat = 0;
+            $nJarak[1] = 0;
         }else if($jarak>=1000 && $jarak<=4000){ //1000 sampai 4000
-            $dekat = ($jarak-1000)/3000;
+            $nJarak[1] = ($jarak-1000)/3000;
         }else{
-            $dekat = (7000-$jarak)/3000;       //4000 sampai 7000
+            $nJarak[1] = (7000-$jarak)/3000;       //4000 sampai 7000
         }
 
         //hitung himpunan jauh
         if($jarak<=4000||$jarak>=10000){
-            $jauh = 0;
+            $nJarak[2] = 0;
         }else if($jarak>=4000 && $jarak<=7000){ //4000 sampai 7000
-            $jauh = ($jarak-4000)/3000;
+            $nJarak[2] = ($jarak-4000)/3000;
         }else{
-            $jauh = (10000-$jarak)/3000;       //7000 sampai 10000
+            $nJarak[2] = (10000-$jarak)/3000;       //7000 sampai 10000
         }
 
         //hitung himpunan sangat jauh
         if($jarak<=7000){
-            $sJauh = 0;
+            $nJarak[3] = 0;
         }else if($jarak>=7000 && $jarak<=10000){ //1000 sampai 4000
-            $sJauh = ($jarak-7000)/3000;
+            $nJarak[3] = ($jarak-7000)/3000;
         }else{
-            $sJauh = 1;
+            $nJarak[3] = 1;
         }
 
-        $ringan;
-        $sedang;
-        $berat;
+        $nBerat=array();
 
          //hitung himpunan ringan
          if($berat>=15){
-            $ringan = 0;
+            $nBerat[0] = 0;
         }else if($berat>=10 && $berat<=15){ //10 sampai 15
-            $ringan = (15-$berat)/5;
+            $nBerat[0] = (15-$berat)/5;
         }else{
-            $ringan = 1;
+            $nBerat[0] = 1;
         }
 
          //hitung himpunan sedang
          if($berat<=10||$berat>=20){
-            $sedang = 0;
+            $nBerat[1] = 0;
         }else if($berat>=10 && $berat<=15){ //10 sampai 15
-            $sedang = ($berat-10)/5;
+            $nBerat[1] = ($berat-10)/5;
         }else{
-            $sedang = (20-$berat)/5;
+            $nBerat[1] = (20-$berat)/5;
         }
 
          //hitung himpunan berat
-         if($berat<=15){
-            $berat = 0;
+        if($berat<=15){
+            $nBerat[2] = 0;
         }else if($berat>=15 && $berat<=20){ //15 sampai 20
-            $berat = ($berat-15)/5;
+            $nBerat[2] = ($berat-15)/5;
         }else{
-            $berat = 1;
+            $nBerat[2] = 1;
+        }
+        
+
+        $rule=array();
+        $x=0;
+        $sumA=0;
+
+        for($i=0;$i<4;$i++){
+            for ($j=0; $j <3 ; $j++) { 
+                $rule[$x]=min($nJarak[$i],$nBerat[$j]);
+                $sumA+=$rule[$x];
+                $x++;
+            }
         }
 
-          
+        $sumAZ=0;
+        for ($i=0; $i <12 ; $i++) { 
+            if($i==4||$i==7){ //prioritas bertambah bila berat = sedang dan jarak = dekat/jauh
+                $sumAZ+=(12-$rule[$i]*11)*$rule[$i];
+            }else{
+                $sumAZ+=(11*$rule[$i]+4)*$rule[$i];
+            }
+        }
+        
+        return $sumAZ/$sumA ;
 
     }
     
