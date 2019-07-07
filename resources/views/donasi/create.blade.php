@@ -80,7 +80,7 @@
         <style>
             #map-canvas {
                 width: 100%;
-                height: 250px;
+                height: 400px;
             }
         </style>
         <script src="{{ asset('js/map.js') }}" ></script>

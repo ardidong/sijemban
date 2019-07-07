@@ -62,11 +62,13 @@ class AdminController extends Controller
 
   public function hitungLokasi(){
       $hasil = array();
+      //mengambil data kecamatan dan jumlah donasi per kecamatan
       $tes = DB::table('donasis')
                     ->select(DB::raw(' kecamatan , count(kecamatan) as jumlah'))
                     ->groupBy('kecamatan')
                     ->get();
 
+      //mengisi array untuk series peta sebaran
       foreach($tes as $lokasi){
         $hasil[] = Arr::add(['name' => $lokasi->kecamatan],'value', $lokasi->jumlah );
       }

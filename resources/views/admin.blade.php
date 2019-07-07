@@ -72,6 +72,7 @@
       },
       yAxis: {
           min: 0,
+          allowDecimals: false,
           title: {
               text: 'Jumlah Donasi'
           }
@@ -125,10 +126,11 @@
 Highcharts.chart('container1', {
 
   title: {
-      text: 'Pertambahan User Setiap Bulan'
+      text: 'Pertambahan User Baru Setiap Bulan'
   },
 
   yAxis: {
+      allowDecimals: false,
       title: {
           text: 'Jumlah User'
       }

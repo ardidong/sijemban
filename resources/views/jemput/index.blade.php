@@ -38,29 +38,18 @@
             <table id='tabel' class="table table-striped table-bordered" style="width:100%">
               <thead>
                   <tr>
-                    <td>ID Donatur</td>
-                    <td>ID Donasi</td>
-                    <td>ID Bencana</td>
+                    <td>Prioritas</td>
+                    <td>Nama Donatur</td>
+                    <td>Nama Bencana</td>
                     <td>Alamat</td>
-                    <td>Diajukan</td>
-                    <td>Dijemput</td>
+                    <td>Jarak</td>
+                    <td>Berat</td>
                     <td>Nomor Resi</td>
                     <td>Status</td>
                   </tr>
               </thead>
               <tbody>
-              @foreach($donasis as $donasi)
-                <tr>
-                    <td>{{$donasi->id_donatur}}</td>
-                    <td>{{$donasi->kode_donasi}}</td>
-                    <td>{{$donasi->id_bencana}}</td>
-                    <td>{{$donasi->alamat}}</td>
-                    <td>{{$donasi->created_at}}</td>
-                    <td>{{$donasi->tanggal_jemput}}</td>
-                    <td>{{$donasi->no_resi}}</td>
-                    <td>{{$donasi->status}}</td>
-                </tr>
-                @endforeach
+          
               </tbody>
             </table>
           </div>

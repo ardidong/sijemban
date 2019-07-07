@@ -48,6 +48,7 @@ Highcharts.chart('container', {
       text: 'Jumlah Barang'
   },
   yAxis: {
+      allowDecimals: false,
       min: 0,
       title: {
           text: 'Jumlah (unit)',
@@ -103,6 +104,7 @@ Highcharts.chart('container1', {
       text: 'Jumlah Konsumsi'
   },
   yAxis: {
+      allowDecimals: false,
       min: 0,
       title: {
           text: 'Jumlah (kg)',
@@ -113,7 +115,7 @@ Highcharts.chart('container1', {
       }
   },
   tooltip: {
-      valueSuffix: ' unit'
+      valueSuffix: ' kg'
   },
   plotOptions: {
       bar: {

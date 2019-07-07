@@ -47,6 +47,7 @@ var map,infoWindow,pos;
 						$("#latitude").val(pos.lat);
 						$('#longitude').val(pos.lng);
 						$('#alamat').text(results[0].formatted_address);
+						console.log(results[1]);
 					}
 				}
 				//Mencari Kecamatan donasi
