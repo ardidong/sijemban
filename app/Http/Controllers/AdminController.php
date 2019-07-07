@@ -28,7 +28,7 @@ class AdminController extends Controller
       }
       $hitung_diajukan = array();
       for ($i=0; $i < 12 ; $i++) {
-        $hitung_diajukan[$i] = Donasi::where('status', '=', 'diajukan')->whereMonth('created_at', '=', $i+1)->count();
+        $hitung_diajukan[$i] = Donasi::whereMonth('created_at', '=', $i+1)->count();
       }
 
       //hitung jumlah user perbulan

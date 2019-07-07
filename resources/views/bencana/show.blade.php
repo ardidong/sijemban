@@ -115,7 +115,7 @@ Highcharts.chart('container1', {
       }
   },
   tooltip: {
-      valueSuffix: ' kg'
+      valueSuffix: ' kilogram'
   },
   plotOptions: {
       bar: {

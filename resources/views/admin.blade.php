@@ -32,6 +32,7 @@
         <div id="container1" style=" height:400px;">
         </div>
       </div>
+      <p>{!!json_encode($hitung_dijemput)!!}</p>
 @endsection
 
 @section('script')
