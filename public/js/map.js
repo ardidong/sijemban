@@ -47,14 +47,15 @@ var map,infoWindow,pos;
 						$("#latitude").val(pos.lat);
 						$('#longitude').val(pos.lng);
 						$('#alamat').text(results[0].formatted_address);
-						console.log(results);
+						
 					}
 				}
 				//Mencari Kecamatan donasi
 				for(var i=0;i<10;i++){
 					if(results[1].address_components[i].types[0]=="administrative_area_level_3"){
 						var str = results[1].address_components[i].long_name;
-						$("#kecamatan").val(str.substr(10));
+						var kec = str.replace(/kecamatan|Kecamatan|kec|kec./g,'');
+						$("#kecamatan").val(kec);
 						break;
 					}
 				}

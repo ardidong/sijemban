@@ -178,7 +178,8 @@ class JemputController extends Controller
         $sumAZ=0;
         for ($i=0; $i <12 ; $i++) { 
             if($i==4||$i==7){ //prioritas bertambah bila berat = sedang dan jarak = dekat/jauh
-                $sumAZ+=(12-$rule[$i]*11)*$rule[$i];
+                $sumAZ+=(12-$rule[$i]*11)*$rule[$i]; // 
+                
             }else{
                 $sumAZ+=(11*$rule[$i]+4)*$rule[$i];
             }
