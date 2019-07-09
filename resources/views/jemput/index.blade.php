@@ -31,25 +31,47 @@
             <h1 class="h2">Dashboard</h1>
           </div>
 
-          <h2>Daftar Donasi</h2>
+          <h2>Daftar Jemput</h2>
           <div class="table-responsive">
+          <div class='row'>
             <button  id='detail' nama='detail' class="btn btn-outline-primary mb-2">Detail </button>
             <button  id='verifikasi' nama='verifikasi' class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#myModal">Verifikasi </button>
+            <button  id='baru' nama='baru' class="btn btn-outline-success mb-2" >Buat Jadwal Baru </button>
+           </div>
+           <div   >
+            <label for="Total Berat">Total Berat : {{$total[0]->totBerat}} Kg</label>
+            <label for="Total Jarak">Total Jarak : {{($total[0]->totJarak)/1000}} Km</label>
+           </div>
             <table id='tabel' class="table table-striped table-bordered" style="width:100%">
               <thead>
                   <tr>
-                    <td>Prioritas</td>
+                    <td>Urutan</td>
+                    <td>Kode Donasi</td>
                     <td>Nama Donatur</td>
                     <td>Nama Bencana</td>
                     <td>Alamat</td>
-                    <td>Jarak</td>
-                    <td>Berat</td>
+                    <td>Jarak (m)</td>
+                    <td>Berat (kg)</td>
                     <td>Nomor Resi</td>
                     <td>Status</td>
                   </tr>
               </thead>
               <tbody>
-          
+                  {{$i=1}}
+                  @foreach($jemputs as $jemputan)
+                  <tr>
+                      <td>{{$i}}</td>
+                      <td>{{$jemputan->kode_donasi}}</td>
+                      <td>{{$jemputan->name}}</td>
+                      <td>{{$jemputan->nama_bencana}}</td>
+                      <td>{{$jemputan->alamat}}</td>
+                      <td>{{$jemputan->jarak}}</td>
+                      <td>{{$jemputan->berat}}</td>
+                      <td>{{$jemputan->no_resi}}</td>
+                      <td>{{$jemputan->status}}</td>
+                      {{$i++}}
+                  </tr>
+                  @endforeach
               </tbody>
             </table>
           </div>
@@ -108,9 +130,14 @@
           window.location.href = lokasi;
         } );
 
+        $('#baru').click( function () {
+          var lokasi = '{{ route("jemput.create") }}';
+          window.location.href = lokasi;
+        } );
+
         $('#verifikasi').click( function () {
           var data = table.rows('.selected').data();
-          if(data[0][7]=='Diajukan'){
+          if(data[0][8]=='Diajukan'){
             $(".modal-body").append("<b>Apakah anda yakin ingin melakukan verikasi?</b>");
             $(".modal-footer").append('<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button> <button type="button" class="btn btn-primary" id="save" >Simpan</button>');
             $("#myModal").modal('handleUpdate');

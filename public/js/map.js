@@ -12,7 +12,7 @@ var map,infoWindow,pos;
               lng: position.coords.longitude
             };
             map.setCenter(pos);
-            getData(pos)
+            getData(pos);
             	
 			var marker = new google.maps.Marker({
 			    position: pos,
@@ -47,7 +47,7 @@ var map,infoWindow,pos;
 						$("#latitude").val(pos.lat);
 						$('#longitude').val(pos.lng);
 						$('#alamat').text(results[0].formatted_address);
-						console.log(results[1]);
+						console.log(results);
 					}
 				}
 				//Mencari Kecamatan donasi

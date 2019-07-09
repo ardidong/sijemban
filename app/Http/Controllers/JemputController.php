@@ -15,6 +15,13 @@ use GuzzleHttp\Client;
 
 class JemputController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -24,24 +31,29 @@ class JemputController extends Controller
     {
    
 
-        // $request->user()->authorizeRoles('petugas');
-        // $jemputs = DB::table('jemput')
-        //                     ->join('donasis','jemput.kode_donasi','=','donasis.kode_donasi')
-        //                     ->join('bencanas','donasis.id_petugas','=','bencanas.id')
-        //                     ->join('users','users.id','=','donasis.id_donatur')
-        //                     ->select('jemput.prioritas','jemput.berat','jemput.jarak','users.name',
-        //                              'bencanas.nama_bencana','donasis.alamat','donasis.no_resi','donasis.status');
-       // return view('jemput.index',compact('jemputs'));
-        //return view('jemput.index');
-
-        $this->schedule();
-      
-        
+        $request->user()->authorizeRoles('petugas');
+        $jemputs = DB::table('jemputs')
+                            ->join('donasis','jemputs.kode_donasi','=','donasis.kode_donasi')  
+                            ->join('users','users.id','=','donasis.id_donatur')
+                            ->join('bencanas','donasis.id_bencana','=','bencanas.id')
+                            ->select('jemputs.kode_donasi','jemputs.berat','jemputs.jarak','donasis.alamat','donasis.no_resi','donasis.status',
+                                    'users.name','bencanas.nama_bencana')
+                            ->orderBy('jemputs.prioritas')
+                            ->get();
+        $total = DB::table('jemputs')
+                            ->select(DB::raw('SUM(berat) AS totBerat, SUM(jarak) AS totJarak'))
+                            ->get();
+        return view('jemput.index',compact('jemputs','total'));    
     }
 
-    public function schedule()
+  /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-           
+            
         $donasis = Donasi::all()->where('status','=','Diajukan');
         foreach($donasis as $donasi)
         {
@@ -65,14 +77,14 @@ class JemputController extends Controller
                 'prioritas'=>$test=$this->infer($jarak,$berat),
                 'hari'=>Carbon::now()->toDateTimeString(),
                 'id_petugas'=>4,
-                'kode_donasi'=>1
+                'kode_donasi'=>$donasi->kode_donasi
 
             ]);
             $jemputan->save();
         }
-            
-
+        return redirect('/jemput');
     }
+
     
     public function infer($jarak,$berat)
     {
@@ -176,17 +188,6 @@ class JemputController extends Controller
 
     }
     
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
