@@ -11,11 +11,18 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DB;
 
+
 class AdminController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
   public function index(Request $request)
   {
-
+      $request->user()->authorizeRoles('admin');
       // sementara untuk menghitung rata" tanggal
       $tanggal = Donasi::whereNotNull('tanggal_jemput')->get();
 

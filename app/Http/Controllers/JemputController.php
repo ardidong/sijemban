@@ -61,7 +61,7 @@ class JemputController extends Controller
             $latlng = $donasi->latitude.','.$donasi->longitude;
             $client = new Client(); //
             $request =$client->post(
-                "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=".$latlng."&destinations=-7.718300,110.357189&key=AIzaSyC6vGzt-YmKpCg-WwAL-FJ7VQ1N9QZzM3U");
+                "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=".$latlng."&destinations=-7.718300,110.357189&key=[API-KEY]");
             $response = $request->getBody()->getContents();
             $result = json_decode($response);
             $jarak = $result ->rows[0]->elements[0]->distance->value;

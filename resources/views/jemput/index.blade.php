@@ -57,8 +57,9 @@
                   </tr>
               </thead>
               <tbody>
-                  {{$i=1}}
+              {{$i=1}}
                   @foreach($jemputs as $jemputan)
+                  
                   <tr>
                       <td>{{$i}}</td>
                       <td>{{$jemputan->kode_donasi}}</td>
@@ -69,8 +70,8 @@
                       <td>{{$jemputan->berat}}</td>
                       <td>{{$jemputan->no_resi}}</td>
                       <td>{{$jemputan->status}}</td>
-                      {{$i++}}
                   </tr>
+                  {{$i++}}
                   @endforeach
               </tbody>
             </table>

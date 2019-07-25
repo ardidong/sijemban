@@ -86,7 +86,7 @@
         <script src="{{ asset('js/map.js') }}" ></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6vGzt-YmKpCg-WwAL-FJ7VQ1N9QZzM3U&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=[API-KEY]&callback=initMap">
         </script>
         <script type="text/javascript">
             $(document).ready(function(){
