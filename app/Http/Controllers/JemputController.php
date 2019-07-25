@@ -57,6 +57,7 @@ class JemputController extends Controller
         $donasis = Donasi::all()->where('status','=','Diajukan');
         foreach($donasis as $donasi)
         {
+            //
             //Cari Jarak Dengan API GOOGLE Maps
             $latlng = $donasi->latitude.','.$donasi->longitude;
             $client = new Client(); //
